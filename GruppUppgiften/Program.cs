@@ -1,4 +1,5 @@
 ﻿using System;
+using static System.Console;
 
 namespace GruppUppgiften
 {
@@ -7,6 +8,9 @@ namespace GruppUppgiften
         static void Main(string[] args)
         {
             Console.WriteLine("Test");
+            WriteLine("Salta kakor");
+            ReadKey();
+
         }
     }
 }
