@@ -10,6 +10,7 @@ namespace GruppUppgiften.Utilitys
     {
         int GetInt();
         string GetString();
+        string GetRndRegNr();
 
        // List<Vehicle> GetListOfVehicle();
     }
