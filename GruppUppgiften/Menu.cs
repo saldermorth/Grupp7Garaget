@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace GruppUppgiften
 {
     public class Menu
-    {       
+    {
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
-            Console.Write("╔");
+            
+            Console.Write($"{ "",40}{"╔"}");
             for (int i = 0; i < 36; i++)
             {
                 Console.Write("═");
@@ -18,10 +19,10 @@ namespace GruppUppgiften
             Console.Write("╗ \n");
 
             //Console.WriteLine($"{"║",-26} {"║"}");
-            Console.WriteLine($"{"║",-10} {k,-26 }{"║"}");
+            Console.WriteLine($"{"",40}{"║",-10} {k,-26 }{"║"}");
             //Console.WriteLine($"{"║",-26} {"║"}");
 
-            Console.Write("╚");
+            Console.Write($"{"",40}{"╚"}");
             for (int i = 0; i < 36; i++)
             {
                 Console.Write("═");
