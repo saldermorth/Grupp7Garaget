@@ -7,6 +7,8 @@ namespace GruppUppgiften
         static void Main(string[] args)
         {
             Console.WriteLine("Testar git");
+            Menu run = new Menu();
+            run.Meny();
         }
     }
 }
