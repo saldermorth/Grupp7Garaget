@@ -10,7 +10,7 @@ namespace GruppUppgiften
     {
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
-            
+
             Console.Write($"{ "",40}{"╔"}");
             for (int i = 0; i < 36; i++)
             {
@@ -39,7 +39,7 @@ namespace GruppUppgiften
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
-            
+
             //Menu that shows up wen run. Default.
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -105,31 +105,37 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     PrintWithBorders(menuItems[1]);
-                    PrintWithBorders(menuItems[2]);                                       
+                    PrintWithBorders(menuItems[2]);
                 }
                 if (counter == 2)
                 {
                     Console.Clear();
-                    PrintWithBorders(menuItems[0]);                    
+                    PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[1]);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[2]);                   
+                    PrintWithBorders(menuItems[2]);
                 }
                 if (counter == 3)
                 {
-                    Console.Clear();
-                    PrintWithBorders(menuItems[0]);                    
-                    PrintWithBorders(menuItems[1]);                    
+                    Console.Clear();                    
+                    PrintWithBorders(menuItems[0]);
+                    PrintWithBorders(menuItems[1]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[2]);
-                    Console.ForegroundColor = ConsoleColor.Gray;                    
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
                 if (counter == 4)
                 {
                     enterPressed = true;
                 }
             }
+        }
+        public void RollCredits()
+        {
+            Credits run = new Credits();
+            run.CreditsLoop();
+            Console.ReadLine();
         }
 
     }
