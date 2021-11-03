@@ -9,7 +9,6 @@ namespace GruppUppgiften
 {
     public class Credits
     {
-
         public void CreditsLoop()
         {
           
