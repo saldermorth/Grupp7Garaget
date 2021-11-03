@@ -18,7 +18,7 @@ namespace GruppUppgiften
             }
             Console.Write("╗ \n");
 
-            //Console.WriteLine($"{"║",-26} {"║"}");
+            //Console.WriteLine($"{"║",-26} {"║"}");  // Use incase the box needs to be higher.
             Console.WriteLine($"{"",40}{"║",-10} {k,-26 }{"║"}");
             //Console.WriteLine($"{"║",-26} {"║"}");
 
