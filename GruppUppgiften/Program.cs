@@ -8,8 +8,8 @@ namespace GruppUppgiften
         {
             
             Menu run = new Menu();
-           // run.Meny();
-            run.RollCredits();
+           //run.Meny();
+            //run.RollCredits();
             
         }
     }
