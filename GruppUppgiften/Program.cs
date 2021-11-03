@@ -12,10 +12,11 @@ namespace GruppUppgiften
             //run.Meny();
             //run.RollCredits();
             
-            for (int i = 0; i < 10; i++)
-            {
-              regTest.GetRndRegNr();
-            }
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    string str = regTest.GetRndRegNr();
+            //    Console.WriteLine(str);
+            //}
             
         }
     }

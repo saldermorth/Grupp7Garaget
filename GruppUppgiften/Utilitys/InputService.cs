@@ -8,7 +8,7 @@ namespace GruppUppgiften.Utilitys
 {
     class InputService : IInput
     {
-        int num = 100;
+        
         public int GetInt() //No in paramater
         {
             int integer;
@@ -22,20 +22,20 @@ namespace GruppUppgiften.Utilitys
 
         public string GetRndRegNr()
         {
-
+            
             int oneNum = 65; // A                
             int twoNum = 90; // Z
             string regNr = "";
             Random rnd = new Random();
-            regNr = "";
+            
             for (int i = 0; i < 3; i++)
             {
                 char temp = Convert.ToChar(rnd.Next(oneNum, twoNum));
                 regNr += temp;
             }
-            regNr += num.ToString();
-            num++;
-            
+            regNr += rnd.Next(100, 999);//num.ToString();
+           
+
             return regNr;
         }
 
