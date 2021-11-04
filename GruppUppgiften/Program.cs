@@ -8,7 +8,7 @@ namespace GruppUppgiften
         static void Main(string[] args)
         {
             InputService regTest = new InputService();
-            Menu run = new Menu();
+            MainMenu run = new MainMenu();
             run.Meny();
             //run.RollCredits();
             

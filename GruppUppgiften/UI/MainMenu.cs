@@ -7,25 +7,25 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften
 {
-    public class Menu
+    public class MainMenu
     {
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
 
             Console.Write($"{ "",40}{"╔"}");
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < 40; i++)
             {
                 Console.Write("═");
             }
             Console.Write("╗ \n");
 
             //Console.WriteLine($"{"║",-26} {"║"}");  // Use incase the box needs to be higher.
-            Console.WriteLine($"{"",40}{"║",-10} {k,-26 }{"║"}");
+            Console.WriteLine($"{"",40}{"║",-10} {k,-30 }{"║"}");
             //Console.WriteLine($"{"║",-26} {"║"}");
 
             Console.Write($"{"",40}{"╚"}");
-            for (int i = 0; i < 36; i++)
+            for (int i = 0; i < 40; i++)
             {
                 Console.Write("═");
             }
@@ -94,12 +94,18 @@ namespace GruppUppgiften
                             break;
                         case 2:
                             Console.WriteLine($"Menu {counter} selected");
+                            //List All Vehicle
                             break;
                         case 3:
                             Console.WriteLine($"Menu {counter} selected");
+                            //Park
                             break;
                         case 4:
-                            Console.WriteLine($"Menu {counter} selected");                           
+                            Console.WriteLine($"Menu {counter} selected");
+                            //Exit
+                            Credits GO = new Credits();
+                            GO.CreditsLoop();
+                            Console.ReadLine();
                             break;
                         
                     }
