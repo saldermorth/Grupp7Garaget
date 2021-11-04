@@ -8,6 +8,7 @@ namespace GruppUppgiften
 {
     public class Menu
     {
+        //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
 
@@ -34,19 +35,21 @@ namespace GruppUppgiften
         public void Meny()
         {   //Counter that starts att oone and removes on if up arrow is pressed 
             //and  adds one if down arrow is pressed
-
-            string[] menuItems = { "AddNewAccount", "Remove Account", "Edit Account" };
+           
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Exit" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
 
             //Menu that shows up wen run. Default.
             Console.Clear();
+            PrintWithBorders("Main Menu");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             PrintWithBorders(menuItems[0]);
             Console.ForegroundColor = ConsoleColor.Gray;
             PrintWithBorders(menuItems[1]);
             PrintWithBorders(menuItems[2]);
+            PrintWithBorders(menuItems[3]);
 
 
             while (enterPressed == false)
@@ -61,13 +64,13 @@ namespace GruppUppgiften
                     }
                     else
                     {
-                        counter = 3;
+                        counter = 4;
                     }
                 }
 
                 if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
-                    if (counter < 3)
+                    if (counter < 4)
                     {
                         counter++;
                     }
@@ -77,13 +80,12 @@ namespace GruppUppgiften
                     }
                 }
 
-
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
                     Console.Clear();
                     Console.WriteLine("Exit");
                     //activate choice                   
-                    switch (counter)
+                    switch (counter) // Här aktiveras valet.
                     {
                         case 1:
                             Console.WriteLine($"Menu {counter} selected");
@@ -94,43 +96,65 @@ namespace GruppUppgiften
                         case 3:
                             Console.WriteLine($"Menu {counter} selected");
                             break;
+                        case 4:
+                            Console.WriteLine($"Menu {counter} selected");
+                            break;
+                        
                     }
-                    counter = 4;
+                    counter = 5; // Måste matcha slutvalet.
                 }
 
                 if (counter == 1)
                 {
                     Console.Clear();
+                    PrintWithBorders("Main Menu");
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[1]);
+                    PrintWithBorders(menuItems[1]);                    
                     PrintWithBorders(menuItems[2]);
+                    PrintWithBorders(menuItems[3]);
                 }
                 if (counter == 2)
                 {
                     Console.Clear();
+                    PrintWithBorders("Main Menu");                    
                     PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[1]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     PrintWithBorders(menuItems[2]);
+                    PrintWithBorders(menuItems[3]);
                 }
                 if (counter == 3)
                 {
-                    Console.Clear();                    
+                    Console.Clear();
+                    PrintWithBorders("Main Menu");
                     PrintWithBorders(menuItems[0]);
                     PrintWithBorders(menuItems[1]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[2]);
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    PrintWithBorders(menuItems[3]);
                 }
                 if (counter == 4)
+                {                    
+                    Console.Clear();
+                    PrintWithBorders("Main Menu");
+                    PrintWithBorders(menuItems[0]);
+                    PrintWithBorders(menuItems[1]);                    
+                    PrintWithBorders(menuItems[2]);
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;                    
+                    PrintWithBorders(menuItems[3]);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                if (counter == 5)
                 {
                     enterPressed = true;
                 }
             }
         }
+
         public void RollCredits()
         {
             Credits run = new Credits();

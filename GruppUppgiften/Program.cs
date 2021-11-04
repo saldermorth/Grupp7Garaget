@@ -9,7 +9,7 @@ namespace GruppUppgiften
         {
             InputService regTest = new InputService();
             Menu run = new Menu();
-            //run.Meny();
+            run.Meny();
             //run.RollCredits();
             
             //for (int i = 0; i < 100; i++)
