@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Motorcycle
+namespace Truck
 {
     public class Truck : Vehical
     {
