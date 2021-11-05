@@ -6,7 +6,7 @@ namespace Truck
     {
         public int MaxTrailerWeight { get; set; }
         public bool HasTrailer { get; set; }
-        public Truck(int id, string type, string model, string tillverkare, string color, int amountOfWheeles, int reg_nr, int maxtrailerweight,bool hastrailer,int weight) : base(amountOfWheels, color, reg_Nr, type, model, tillverkare, id)
+        public Truck(string type, string model, string tillverkare, string color, int amountOfWheeles, int reg_nr, int maxtrailerweight,bool hastrailer,int weight) : base(amountOfWheels, color, reg_Nr, type, model, tillverkare)
         {
             maxtrailerweight = MaxTrailerWeight;
             hastrailer = HasTrailer;
