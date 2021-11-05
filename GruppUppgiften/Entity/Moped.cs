@@ -19,8 +19,8 @@ namespace GruppUppgiften
         public override string ToString()
         {
             return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Tillverkare}. " +
-                   $"Color: {Color}. Amount of Wheels: {AmountOfWheeles}. Regnumber: {Reg_Nr}." +
-                   $"Has Horn: {HasHorn}. Is Pedal: {IsPedal}"; // Ändra ispedal
+                   $"Color: {Color}. Amount of Wheels: {AmountOfWheeles}. Licens plate: {Reg_Nr}." +
+                   $"Has Horn: {HasHorn}. Is Pedal: {IsPedal}";
         }
     }
 }
