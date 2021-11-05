@@ -17,7 +17,7 @@ namespace GruppUppgiften
         public string Model { get; set; }
         public string Tillverkare { get; set; }
         
-        public Vehicle(int amountofwheeles, string color, string reg_nr, string type, string model, string tillverkare, int Id)
+        public Vehicle(int amountofwheeles, string color, string reg_nr, string type, string model, string tillverkare)
         {
             Id = ++idCounter;
             AmountOfWheeles = amountofwheeles;
