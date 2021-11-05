@@ -71,18 +71,23 @@ namespace GruppUppgiften.UI
                             Console.WriteLine($"Menu {counter} selected");
                             FoundMenu temp = new FoundMenu();
                             temp.SearchMeny();
+                            //Find By RegNr
                             break;
                         case 2:
                             Console.WriteLine($"Menu {counter} selected");
+                            //Find All By Color
                             break;
                         case 3:
                             Console.WriteLine($"Menu {counter} selected");
+                            //Find All By Number Of Wheels
                             break;
                         case 4:
                             Console.WriteLine($"Menu {counter} selected");
+                            //Find All By Number Of Seats
                             break;
                         case 5:
                             Console.WriteLine($"Menu {counter} selected");
+                            //Main Menu
                             run.Meny();
                             break;
                     }
