@@ -6,14 +6,18 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften.Data
 {
-    interface IVehicle<T>
+    interface IVehicle
     {
-        List<T> ListVehicles(); // Skriv ut lista över samtliga fordon
-        List<T> ListTypeOfVehicles(string type); // Skriv ut lista över samtliga typer av fordon i garaget och hur många av dessa som står i garaget
-        T AddVehicle(T obj); // Lägg till fordon
+        List<Vehicle> ListVehicles(); // Skriv ut lista över samtliga fordon
+        List<Vehicle> ListTypeOfVehicles(string type); // Skriv ut lista över samtliga typer av fordon i garaget och hur många av dessa som står i garaget
+        List<Vehicle> ListTheColor(string color); //Lista alla fordon av efterfrågad färg
+        List<Vehicle> ListAmountOfWheels(int tyres); //Skriv ut antal däck på fordon
+        List<Vehicle> ListModel(string model); // Skrit ut model
+        List<Vehicle> ListBrand(string brand);
+        Vehicle AddVehicle(Vehicle obj); // Lägg till fordon
         void RemoveVehicle(int id); // Ta bort fordon
-        T SearchVehicle(int id, string regNum); // Sök fordon efter ID (REG-NR)
-        T FindType(string type, int id, string regNum); // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." Vilka variabler behöver vi? **
+        Vehicle SearchVehicle(int id, string regNum); // Sök fordon efter ID (REG-NR)
+        Vehicle FindById(int id); // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." Vilka variabler behöver vi? **
 
 
     }

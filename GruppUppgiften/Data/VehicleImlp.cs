@@ -3,20 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataFolderExemple.Entity;
+using GruppUppgiften.Entity;
 
 namespace GruppUppgiften.Data
 {
-    class VehicleImpl : IVehicle<Vehicle>
+    class VehicleImpl : IVehicle
     {
-        private readonly List<Vehicle> vehicleList = new(); 
+        //DB
+        private readonly List<Vehicle> vehicleList = new();
 
-        List<Vehicle> IVehicle<Vehicle>.ListVehicles() // Skriv ut lista över alla fordon
+        List<Vehicle> IVehicle.ListVehicles() // Skriv ut lista över alla fordon
         {
             return vehicleList;
         }
 
-        List<Vehicle> IVehicle<Vehicle>.ListTypeOfVehicles(string type) // Listar samtliga olika typer av fordon, samt antal av dessa
+        // Listar samtliga olika typer av fordon, samt antal av dessa
+        List<Vehicle> IVehicle.ListTypeOfVehicles(string type) //Fordonstyp
         {
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
@@ -24,12 +26,59 @@ namespace GruppUppgiften.Data
                 if(v.Type == type)
                 {
                     temp.Add(v);
-                }
-                return temp;
+                }  
             }
+            return temp;
         }
 
-        IVehicle IVehicle<Vehicle>.AddVehicle(Vehicle obj) // Lägg till ett fordon till listan upp till max kapacitet
+        List<Vehicle> IVehicle.ListTheColor(string color) //Fordons färg
+        {
+            List<Vehicle> temp = new();
+            foreach (Vehicle v in vehicleList)
+            {
+                temp.Add(v);
+            }
+            return temp;
+        }
+        List<Vehicle> IVehicle.ListAmountOfWheels(int tyres) //Antal hjul
+        {
+            List<Vehicle> temp = new();
+            foreach (Vehicle v in vehicleList)
+            {
+                if(v.AmountOfWheeles > 0)
+                {
+                    temp.Add(v);
+                }
+            }
+            return temp;
+        }
+
+        List<Vehicle> IVehicle.ListModel(string model)
+        {
+            List<Vehicle> temp = new();
+            foreach (Vehicle v in vehicleList)
+            {
+                if (v.Model == model)
+                {
+                    temp.Add(v);
+                }
+            }
+            return temp;
+        }
+        List<Vehicle> IVehicle.ListBrand(string model)
+        {
+            List<Vehicle> temp = new();
+            foreach (Vehicle v in vehicleList)
+            {
+                if (v.Tillverkare == model)
+                {
+                    temp.Add(v);
+                }
+            }
+            return temp;
+        }
+
+        Vehicle IVehicle.AddVehicle(Vehicle obj) // Lägg till ett fordon till listan upp till max kapacitet
         {
             if (!vehicleList.Contains(obj) && obj != null && vehicleList.Count <= 50)
             {
@@ -38,7 +87,7 @@ namespace GruppUppgiften.Data
             return obj;
         }
 
-        void IVehicle<Vehicle>.RemoveVehicle(int id) // Ta bort specifikt fordon från listan
+        void IVehicle.RemoveVehicle(int id) // Ta bort specifikt fordon från listan
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {
@@ -49,11 +98,11 @@ namespace GruppUppgiften.Data
             }
         }
 
-        Vehicle IVehicle<Vehicle>.SearchVehicle(int id, string regNum) //Hämta fordon efter id och regnummer
+        Vehicle IVehicle.SearchVehicle(int id, string regNum) //Hämta fordon efter id och regnummer
         {
             foreach (Vehicle v in vehicleList)
             {
-                if (v.Id.Equals(id) && v.Equals(regNum))
+                if (v.Id == id && v.Equals(regNum))
                 {
                     return v;
                 }
@@ -61,11 +110,11 @@ namespace GruppUppgiften.Data
             return null;
         }
 
-        Vehicle IVehicle<Vehicle>.FindType(string type, int id, string regNum) // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." **
+        Vehicle IVehicle.FindById(int id) // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." **
         {
             foreach (Vehicle v in vehicleList)
             {
-                if (v.GetType().Equals(fordsonstyp))
+                if (v.Id == id)
                 {
                     return v;
                 }
