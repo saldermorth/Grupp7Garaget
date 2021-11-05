@@ -8,10 +8,8 @@ namespace GruppUppgiften.Data
 {
     interface IVehicle<T>
     {
-        // ** Obs: Ha en max-gräns som krävs som inparameter vid instansieringen av ett nytt garage? **
-
         List<T> ListVehicles(); // Skriv ut lista över samtliga fordon
-        List<T> ListTypeOfVehicles(); // Skriv ut lista över samtliga typer av fordon i garaget och hur många av dessa som står i garaget
+        List<T> ListTypeOfVehicles(string type); // Skriv ut lista över samtliga typer av fordon i garaget och hur många av dessa som står i garaget
         T AddVehicle(T obj); // Lägg till fordon
         void RemoveVehicle(int id); // Ta bort fordon
         T SearchVehicle(int id, string regNum); // Sök fordon efter ID (REG-NR)

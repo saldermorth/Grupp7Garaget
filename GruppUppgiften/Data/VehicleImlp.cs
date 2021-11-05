@@ -3,35 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataFolderExemple.Entity;   //** Behövs eller kan tas bort? **
+using DataFolderExemple.Entity;
 
 namespace GruppUppgiften.Data
 {
     class VehicleImpl : IVehicle<Vehicle>
     {
-        private readonly List<Vehicle> vehicleList = new(garageCapacity);  // ** Fråga användaren och sätt hur storlek på garaget (garageCapacity?) **
+        private readonly List<Vehicle> vehicleList = new(); 
 
         List<Vehicle> IVehicle<Vehicle>.ListVehicles() // Skriv ut lista över alla fordon
         {
             return vehicleList;
         }
 
-        List<Vehicle> IVehicle<Vehicle>.ListTypeOfVehicles() // Listar samtliga olika typer av fordon, samt antal av dessa
+        List<Vehicle> IVehicle<Vehicle>.ListTypeOfVehicles(string type) // Listar samtliga olika typer av fordon, samt antal av dessa
         {
-            // ** Skriv ut fordonstyp och antal, men var och hur skriver vi ut fordonstyp/antal? **
-            // var count = ListTypeOfVehicles.Count(x => x == model));  Kan denna funka?
-            // eller det här från följande sida https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.count?view=net-5.0                                               
-            // public int Count { get; }
-            /* foreach (Part aPart in parts)
+            List<Vehicle> temp = new();
+            foreach (Vehicle v in vehicleList)
             {
-            Console.WriteLine(aPart);
-            } */
-            // Console.WriteLine("\nCapacity: {0}", parts.Capacity);
+                if(v.Type == type)
+                {
+                    temp.Add(v);
+                }
+                return temp;
+            }
         }
 
-        IVehicle IVehicle<Vehicle>.AddVehicle(VehicleImpl obj) // Lägg till ett fordon till listan upp till max kapacitet (garageCapacity)
+        IVehicle IVehicle<Vehicle>.AddVehicle(Vehicle obj) // Lägg till ett fordon till listan upp till max kapacitet
         {
-            if (!vehicleList.Contains(obj) && obj != null && vehicleList < garageCapacity)
+            if (!vehicleList.Contains(obj) && obj != null && vehicleList.Count <= 50)
             {
                 vehicleList.Add(obj);
             }
@@ -61,7 +61,7 @@ namespace GruppUppgiften.Data
             return null;
         }
 
-        Vehicle IVehicle<Vehicle>.FindType(string type, int id, string regNum) // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." (Olika fordon, Klassen Vehicle ​och dess ​ärvande subklasser) **
+        Vehicle IVehicle<Vehicle>.FindType(string type, int id, string regNum) // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." **
         {
             foreach (Vehicle v in vehicleList)
             {
