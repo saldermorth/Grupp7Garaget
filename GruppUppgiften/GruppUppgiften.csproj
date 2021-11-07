@@ -6,9 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Entity\" />
     <Folder Include="UI\" />
+    <Folder Include="Service\" />
     <Folder Include="Utilitys\" />
   </ItemGroup>
 
