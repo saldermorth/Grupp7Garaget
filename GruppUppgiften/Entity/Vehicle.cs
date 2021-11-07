@@ -15,9 +15,9 @@ namespace GruppUppgiften
         public string Reg_Nr { get; set; }
         public string Type { get; set; }
         public string Model { get; set; }
-        public string Tillverkare { get; set; }
+        public string Brand { get; set; }
         
-        public Vehicle(int amountofwheeles, string color, string reg_nr, string type, string model, string tillverkare)
+        public Vehicle(int amountofwheeles, string color, string reg_nr, string type, string model, string brand)
         {
             Id = ++idCounter;
             AmountOfWheeles = amountofwheeles;
@@ -25,7 +25,7 @@ namespace GruppUppgiften
             Reg_Nr = reg_nr;
             Type = type;
             Model = model;
-            Tillverkare = tillverkare;
+            Brand = brand;
         }
     }
 }

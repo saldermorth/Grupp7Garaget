@@ -1,21 +1,22 @@
-﻿using System;
+﻿using GruppUppgiften;
+using System;
 
 namespace Motorcycle
 {
-    public class Motorcycle : Vehical
+    class Motorcycle : Vehicle
     {
         public bool IsOffroad { get; set; }
         public int Weight { get; set; }
-        public Motorcycle(int Id, string type, string Model, string ,string Manufacturer, string Color, int AmountOfWheeles, int LicensePlate, bool IsOffroad, int Weight) : base (amountOfWheels, color, reg_Nr, type, model, tillverkare, id)
+        public Motorcycle(int amountOfWheeles, string color, string reg_nr, string type, string model, string brand, bool isOffroad, int weight) : base(amountOfWheeles, color, reg_nr, type, model, brand)
         {
-            IsOffroad = IsOffroad;
-            Weight = Weight;
+            IsOffroad = isOffroad;
+            Weight = weight;
         }
         public override string ToString()
         {
-            return $"Id: {Id}. Type: {type}. Model: {Model}. Manufacturer: {Manufacturer}. " +
-                   $"Color: {Color}. AmountOfWheeles: {AmountOfWheeles}. License plate: {LicensePlate}." +
-                   $"Is Offroad: {IsOffroad}. Weight: {Weight}";
+            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
+                   $"Color: {Color}. AmountOfWheeles: {AmountOfWheeles}. License plate: {Reg_Nr}." +
+                   $"Is offroad: {IsOffroad}. Weight: {Weight}";
         }
     }
 }

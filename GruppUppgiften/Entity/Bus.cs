@@ -10,17 +10,17 @@ namespace GruppUppgiften.Entity
     {
         public bool HasToielts { get; set; }
         public int Levels { get; set; }
-        public Bus(int amountofwheeles, string color, string reg_nr, string type, string model, string tillverkare, int levels, bool hastoielts) : base(amountofwheeles, color, reg_nr, type, model, tillverkare)
+        public Bus(int amountofwheeles, string color, string reg_nr, string type, string model, string brand, int levels, bool hasToielts) : base(amountofwheeles, color, reg_nr, type, model, brand)
         {
-            hastoielts = HasToielts;
-            levels = Levels;
+            HasToielts = hasToielts;
+            Levels = levels;
         }
 
         public override string ToString()
         {
-            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Tillverkare}. " +
+            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
                    $"Color: {Color}. Amount of Wheels: {AmountOfWheeles}. Regnumber: {Reg_Nr}." +
-                   $"Levels: {Levels}. Has Toielts: {HasToielts}"; 
+                   $"Levels: {Levels}. Has Toielts: {HasToielts}";
         }
     }
 }

@@ -10,15 +10,15 @@ namespace GruppUppgiften
     {
         public bool IsPedal { get; set; }
         public bool HasHorn { get; set; }
-        public Moped(int amountofwheeles, string color, string reg_nr, string type, string model, string tillverkare, bool ispedal, bool hashorn) : base (amountofwheeles, color, reg_nr, type, model, tillverkare)
+        public Moped(int amountofwheeles, string color, string reg_nr, string type, string model, string brand, bool isPedal, bool hasHorn) : base(amountofwheeles, color, reg_nr, type, model, brand)
         {
-            ispedal = IsPedal;
-            hashorn = HasHorn;
+            IsPedal = isPedal;
+            HasHorn = hasHorn;
         }
 
         public override string ToString()
         {
-            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Tillverkare}. " +
+            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
                    $"Color: {Color}. Amount of Wheels: {AmountOfWheeles}. Licens plate: {Reg_Nr}." +
                    $"Has Horn: {HasHorn}. Is Pedal: {IsPedal}";
         }

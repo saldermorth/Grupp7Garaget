@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften.Service
 {
-    interface IGarage<T>
+    interface IGarage<Vehicle>
     {
-        List<T> ListVehicles();
-        List<T> ListTypeOfVehicles(T obj);
-        T AddVehicle(T obj);
-        void RemoveVehicle(int id);
-        T FindById(int id);
-        T SearchVehicle(T obj);
+        List<Vehicle> ListVehicles();
+        List<Vehicle> ListTypeOfVehicles(string type);
+        List<Vehicle> ListTheColor(string color);
+        List<Vehicle> ListAmountOfWheels(int amount);
+        List<Vehicle> ListModel(string model);
+        List<Vehicle> ListBrand(string brand);
+        Vehicle AddVehicle(Vehicle obj);
+        void RemoveVehicle(Vehicle obj);
+        Vehicle FindById(int id);
+        Vehicle SearchVehicle(Vehicle obj);
     }
 }

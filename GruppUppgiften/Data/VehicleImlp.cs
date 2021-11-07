@@ -12,40 +12,43 @@ namespace GruppUppgiften.Data
         //DB
         private readonly List<Vehicle> vehicleList = new();
 
-        List<Vehicle> IVehicle.ListVehicles() // Skriv ut lista över alla fordon
+        List<Vehicle> IVehicle.ListVehicles()
         {
             return vehicleList;
         }
 
-        // Listar samtliga olika typer av fordon, samt antal av dessa
-        List<Vehicle> IVehicle.ListTypeOfVehicles(string type) //Fordonstyp
+
+        List<Vehicle> IVehicle.ListTypeOfVehicles(string type)
         {
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
             {
-                if(v.Type == type)
+                if (v.Type.Equals(type))
                 {
                     temp.Add(v);
-                }  
+                }
             }
             return temp;
         }
 
-        List<Vehicle> IVehicle.ListTheColor(string color) //Fordons färg
+        List<Vehicle> IVehicle.ListTheColor(string color)
         {
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
             {
-                temp.Add(v);
+                if (v.Color.Equals(color))
+                {
+                    temp.Add(v);
+                }
             }
             return temp;
         }
-        List<Vehicle> IVehicle.ListAmountOfWheels(int tyres) //Antal hjul
+        List<Vehicle> IVehicle.ListAmountOfWheels(int amount)
         {
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
             {
-                if(v.AmountOfWheeles > 0)
+                if (v.AmountOfWheeles == amount)
                 {
                     temp.Add(v);
                 }
@@ -58,19 +61,19 @@ namespace GruppUppgiften.Data
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
             {
-                if (v.Model == model)
+                if (v.Model.Equals(model))
                 {
                     temp.Add(v);
                 }
             }
             return temp;
         }
-        List<Vehicle> IVehicle.ListBrand(string model)
+        List<Vehicle> IVehicle.ListBrand(string brand)
         {
             List<Vehicle> temp = new();
             foreach (Vehicle v in vehicleList)
             {
-                if (v.Tillverkare == model)
+                if (v.Brand.Equals(brand))
                 {
                     temp.Add(v);
                 }
@@ -78,27 +81,31 @@ namespace GruppUppgiften.Data
             return temp;
         }
 
-        Vehicle IVehicle.AddVehicle(Vehicle obj) // Lägg till ett fordon till listan upp till max kapacitet
+        Vehicle IVehicle.AddVehicle(Vehicle obj)
         {
             if (!vehicleList.Contains(obj) && obj != null && vehicleList.Count <= 50)
             {
                 vehicleList.Add(obj);
             }
+            if (vehicleList.Count > 50)
+            {
+                Console.WriteLine("The garage is full.");
+            }
             return obj;
         }
 
-        void IVehicle.RemoveVehicle(int id) // Ta bort specifikt fordon från listan
+        void IVehicle.RemoveVehicle(int id)
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {
-                if (vehicleList[i].Id.Equals(id))
+                if (vehicleList[i].Id == id)
                 {
                     vehicleList.Remove(vehicleList[i]);
                 }
             }
         }
 
-        Vehicle IVehicle.SearchVehicle(int id, string regNum) //Hämta fordon efter id och regnummer
+        Vehicle IVehicle.SearchVehicle(int id, string regNum)
         {
             foreach (Vehicle v in vehicleList)
             {
@@ -110,7 +117,7 @@ namespace GruppUppgiften.Data
             return null;
         }
 
-        Vehicle IVehicle.FindById(int id) // ** "Möjlighet att söka efter ett flertal fordon på ett flertal valfria variabler." **
+        Vehicle IVehicle.FindById(int id)
         {
             foreach (Vehicle v in vehicleList)
             {
