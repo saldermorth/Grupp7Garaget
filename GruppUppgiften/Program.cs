@@ -7,10 +7,7 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test");
-            WriteLine("Salta kakor");
-            ReadKey();
-
+            Console.WriteLine("Testar git");
         }
     }
 }
