@@ -1,5 +1,6 @@
 ﻿using GruppUppgiften.Utilitys;
 using System;
+using static System.Console;
 
 namespace GruppUppgiften
 {
