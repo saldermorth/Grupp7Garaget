@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GruppUppgiften.Entity;
+using GruppUppgiften.Utilitys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +8,19 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften.UI
 {
-    class SearchMenu
-    {                
-        public void SearchMeny()
-        {   //Counter that starts att one and removes one if up arrow is pressed 
-            //and  adds one if down arrow is pressed
-
+    class TypeOfVehicleMenu
+    {
+        public void Menu()
+        {
             MainMenu Main = new MainMenu();
-            string[] menuItems = { "Find By RegNr", "Find All By Color", "Find All By Number Of Wheels", "Find All By Number Of Seats", "Main Menu" };
+            string[] menuItems = { "Buss", "Moped", "Motorcycle", "Truck", "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
 
             //Menu that shows up when run. Default.
             Console.Clear();
-            Main.PrintWithBorders("Search Menu");
+            Main.PrintWithBorders("What Type");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Main.PrintWithBorders(menuItems[0]);
             Console.ForegroundColor = ConsoleColor.Gray;
@@ -28,6 +28,7 @@ namespace GruppUppgiften.UI
             Main.PrintWithBorders(menuItems[2]);
             Main.PrintWithBorders(menuItems[3]);
             Main.PrintWithBorders(menuItems[4]);
+
 
             MainMenu run = new MainMenu();
 
@@ -62,7 +63,7 @@ namespace GruppUppgiften.UI
 
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
-                    Console.Clear();                    
+                    Console.Clear();
                     //activate choice                   
                     switch (counter)
                     {
@@ -82,20 +83,21 @@ namespace GruppUppgiften.UI
                             break;
                         case 4:
                             //Find All By Number Of Seats
-                            
+                            //RemoveVehicle(Vehicle obj);
                             break;
-                        case 5:                            
-                            //Main Menu
+                        case 5:
                             run.Meny();
+                            //Main Menu
                             break;
+
                     }
-                    counter = 6;
+                    counter = 5;
                 }
 
                 if (counter == 1)
                 {
                     Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
+                    Main.PrintWithBorders("What Type");
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Main.PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.Gray;
@@ -103,11 +105,12 @@ namespace GruppUppgiften.UI
                     Main.PrintWithBorders(menuItems[2]);
                     Main.PrintWithBorders(menuItems[3]);
                     Main.PrintWithBorders(menuItems[4]);
+
                 }
                 if (counter == 2)
                 {
                     Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
+                    Main.PrintWithBorders("What Type");
                     Main.PrintWithBorders(menuItems[0]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Main.PrintWithBorders(menuItems[1]);
@@ -119,7 +122,7 @@ namespace GruppUppgiften.UI
                 if (counter == 3)
                 {
                     Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
+                    Main.PrintWithBorders("What Type");
                     Main.PrintWithBorders(menuItems[0]);
                     Main.PrintWithBorders(menuItems[1]);
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -131,7 +134,7 @@ namespace GruppUppgiften.UI
                 if (counter == 4)
                 {
                     Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
+                    Main.PrintWithBorders("What Type");
                     Main.PrintWithBorders(menuItems[0]);
                     Main.PrintWithBorders(menuItems[1]);
                     Main.PrintWithBorders(menuItems[2]);
@@ -143,7 +146,7 @@ namespace GruppUppgiften.UI
                 if (counter == 5)
                 {
                     Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
+                    Main.PrintWithBorders("What Type");
                     Main.PrintWithBorders(menuItems[0]);
                     Main.PrintWithBorders(menuItems[1]);
                     Main.PrintWithBorders(menuItems[2]);
@@ -156,8 +159,9 @@ namespace GruppUppgiften.UI
                 {
                     enterPressed = true;
                 }
+               
             }
-        }
+            
+        }      
     }
 }
-

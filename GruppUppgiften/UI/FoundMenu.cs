@@ -13,7 +13,7 @@ namespace GruppUppgiften.UI
         {
             MainMenu Main = new MainMenu();
             //Counter that starts att one and removes one if up arrow is pressed 
-            //and  adds one if down arrow is pressed
+            //and adds one if down arrow is pressed
 
             string[] menuItems = { "Depart vehicle from garage", "Main Menu" };
             int counter = 1;
@@ -62,16 +62,16 @@ namespace GruppUppgiften.UI
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
                     Console.Clear();
-                    Console.WriteLine("Exit");
+                    
                     //activate choice                   
                     switch (counter)
                     {
                         case 1:
-                            Console.WriteLine($"Menu {counter} selected");
                             //Depart vehicle from garage
+                            // RemoveVehicle(Vehicle obj)
                             break;
                         case 2:                          
-                            run.Meny();
+                             run.Meny();
                             //Main Menu
                             break;
                     }
