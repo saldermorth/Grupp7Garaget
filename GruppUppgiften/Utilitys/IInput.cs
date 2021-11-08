@@ -11,7 +11,7 @@ namespace GruppUppgiften.Utilitys
         int GetInt();
         string GetString();
         string GetRndRegNr();
+        bool GetTrueOrFalse();
 
-       // List<Vehicle> GetListOfVehicle();
     }
 }

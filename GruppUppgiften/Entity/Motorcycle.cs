@@ -1,13 +1,13 @@
 ﻿using GruppUppgiften;
 using System;
 
-namespace Motorcycle
+namespace GruppUppgiften
 {
     class Motorcycle : Vehicle
     {
         public bool IsOffroad { get; set; }
         public int Weight { get; set; }
-        public Motorcycle(int amountOfWheeles, string color, string reg_nr, string type, string model, string brand, bool isOffroad, int weight) : base(amountOfWheeles, color, reg_nr, type, model, brand)
+        public Motorcycle(int amountOfWheeles, string color, string type, string model, string brand, bool isOffroad, int weight) : base(amountOfWheeles, color, type, model, brand)
         {
             IsOffroad = isOffroad;
             Weight = weight;
