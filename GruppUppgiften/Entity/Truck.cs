@@ -1,7 +1,7 @@
 ﻿using GruppUppgiften;
 using System;
 
-namespace Truck
+namespace GruppUppgiften
 {
     class Truck : Vehicle
     {
@@ -14,6 +14,7 @@ namespace Truck
         }
         public override string ToString()
         {
+            //To do - Formating all classes
             return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
                    $"Color: {Color}. AmountOfWheeles: {AmountOfWheeles}. License plate: {Reg_Nr}." +
                    $"HasTrailer: {HasTrailer}. MaxTrailerWeight: {MaxTrailerWeight}";

@@ -14,24 +14,17 @@ namespace GruppUppgiften.Utilitys
 
         public void PrintInfoOfAllVehicles()
         {
-            Vehicle test = new Vehicle(3,"blue", "asd123", "Truck", "People", "Volvo");
+            Truck test = new(3,"blue", "asd123", "Truck", "People", "Volvo",50000, true);
             garaget.AddVehicle(test);
-
+            
             List<Vehicle> temp = garaget.ListVehicles();
 
             //(int amountOfWheeles, string color, string reg_nr, string type, string model, string brand, int maxtrailerweight, bool hastrailer)
-            foreach (Truck V in temp)
+            foreach (Vehicle V in temp)
             {
                 Console.WriteLine(V); 
             }
-            foreach (Truck V in temp)
-            {
-                Console.WriteLine(V);
-            }
-            foreach (Truck V in temp)
-            {
-                Console.WriteLine(V);
-            }
+            
 
 
 

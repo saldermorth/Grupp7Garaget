@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GruppUppgiften.Entity
-{
+namespace GruppUppgiften
+{ 
     class Bus : Vehicle
     {
         public bool HasToielts { get; set; }

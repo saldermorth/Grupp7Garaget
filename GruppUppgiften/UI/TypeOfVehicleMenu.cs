@@ -1,4 +1,4 @@
-﻿using GruppUppgiften.Entity;
+﻿using GruppUppgiften;
 using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;

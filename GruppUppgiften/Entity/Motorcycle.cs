@@ -1,7 +1,7 @@
 ﻿using GruppUppgiften;
 using System;
 
-namespace Motorcycle
+namespace GruppUppgiften
 {
     class Motorcycle : Vehicle
     {
