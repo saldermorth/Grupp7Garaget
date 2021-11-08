@@ -7,7 +7,7 @@ namespace GruppUppgiften
     {
         public int MaxTrailerWeight { get; set; }
         public bool HasTrailer { get; set; }
-        public Truck(int amountOfWheeles, string color, string reg_nr, string type, string model, string brand, int maxtrailerweight, bool hastrailer) : base(amountOfWheeles, color, reg_nr, type, model, brand)
+        public Truck(int amountOfWheeles, string color, string type, string model, string brand, int maxtrailerweight, bool hastrailer) : base(amountOfWheeles, color, type, model, brand)
         {
             MaxTrailerWeight = maxtrailerweight;
             HasTrailer = hastrailer;

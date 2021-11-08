@@ -18,5 +18,6 @@ namespace GruppUppgiften.Service
         void RemoveVehicle(Vehicle obj);
         Vehicle FindById(int id);
         Vehicle SearchVehicle(Vehicle obj);
+        Vehicle CreateTypeOfVehicle(string type);
     }
 }
