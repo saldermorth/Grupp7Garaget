@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GruppUppgiften.Utilitys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,7 @@ namespace GruppUppgiften
     class Vehicle
     {
         private static int idCounter = 0;
+        private static readonly InputService input = new();
         public int Id { get; set; }
         public int AmountOfWheeles { get; set; }
         public string Color { get; set; }
@@ -17,12 +19,12 @@ namespace GruppUppgiften
         public string Model { get; set; }
         public string Brand { get; set; }
         
-        public Vehicle(int amountofwheeles, string color, string reg_nr, string type, string model, string brand)
+        public Vehicle(int amountofwheeles, string color, string type, string model, string brand)
         {
             Id = ++idCounter;
             AmountOfWheeles = amountofwheeles;
             Color = color;
-            Reg_Nr = reg_nr;
+            Reg_Nr = input.GetRndRegNr();
             Type = type;
             Model = model;
             Brand = brand;

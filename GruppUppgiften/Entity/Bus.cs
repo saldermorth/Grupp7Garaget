@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GruppUppgiften.Entity
+namespace GruppUppgiften
 {
     class Bus : Vehicle
     {
         public bool HasToielts { get; set; }
         public int Levels { get; set; }
-        public Bus(int amountofwheeles, string color, string reg_nr, string type, string model, string brand, int levels, bool hasToielts) : base(amountofwheeles, color, reg_nr, type, model, brand)
+        public Bus(int amountofwheeles, string color, string type, string model, string brand, int levels, bool hasToielts) : base(amountofwheeles, color, type, model, brand)
         {
             HasToielts = hasToielts;
             Levels = levels;

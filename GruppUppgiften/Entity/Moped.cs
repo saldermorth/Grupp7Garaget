@@ -10,7 +10,7 @@ namespace GruppUppgiften
     {
         public bool IsPedal { get; set; }
         public bool HasHorn { get; set; }
-        public Moped(int amountofwheeles, string color, string reg_nr, string type, string model, string brand, bool isPedal, bool hasHorn) : base(amountofwheeles, color, reg_nr, type, model, brand)
+        public Moped(int amountofwheeles, string color, string type, string model, string brand, bool isPedal, bool hasHorn) : base(amountofwheeles, color, type, model, brand)
         {
             IsPedal = isPedal;
             HasHorn = hasHorn;
