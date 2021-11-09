@@ -19,7 +19,6 @@ namespace GruppUppgiften
         public override string ToString()
         {
             return String.Format("|{0,15}|{1,10}|{2,17}|{3,12}|{4,23}|{5,19}| Gas:{6,1}| Sporty:{7,1}", Type, Model, Brand, Color, AmountOfWheeles, Reg_Nr, IsPetrol, IsSportCar);
-            
         }
     }
 }

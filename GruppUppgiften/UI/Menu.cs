@@ -800,8 +800,17 @@ namespace GruppUppgiften
 
             foreach (Vehicle v in ListV)
             {
+                if (v.ToString() == "GruppUppgiften.Vehicle")
+                {
+                    string str =String.Format("|{0,15}|{1,10}|{2,17}|{3,12}|{4,23}|{5,19}|", v.Type, v.Model, v.Brand, v.Color, v.AmountOfWheeles, v.Reg_Nr);
+                    Console.WriteLine(str);
+                }
+                else
+                {
+                    Console.WriteLine(v.ToString());
+                }
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v.ToString());
+                
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;

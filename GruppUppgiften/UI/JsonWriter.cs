@@ -34,6 +34,7 @@ namespace GruppUppgiften.UI
                     foreach (Vehicle item in vehiclesFromDb)
                     {
                         Vehicle test = garageImpl.AddVehicle(item);
+                        Console.WriteLine(item.Brand);
                     }
                 }
                 
