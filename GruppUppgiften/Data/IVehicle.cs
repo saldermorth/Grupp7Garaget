@@ -17,9 +17,7 @@ namespace GruppUppgiften.Data
         Vehicle AddVehicle(Vehicle obj);
         void RemoveVehicle(Vehicle obj);
         Vehicle SearchVehicle(string regNum);
-
-
-
+        List<Vehicle> AddVehicleListFromDB(List<Vehicle> objects);
     }
 }
 

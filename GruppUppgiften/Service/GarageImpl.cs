@@ -13,7 +13,20 @@ namespace GruppUppgiften.Service
     {
         private readonly IVehicle dao = new VehicleImpl();
 
-
+        public List<Vehicle> AddVehicleListFromDB(List<Vehicle> objects)
+        {
+            foreach (Vehicle v in objects)
+            {
+                
+                AddVehicle(v);
+             
+                if (objects.Count > 50)
+                {
+                    Console.WriteLine("The garage is full.");
+                }
+            }
+            return objects;
+        }
         public Vehicle AddVehicle(Vehicle obj)
         {
             Vehicle toAdd = dao.AddVehicle(obj);
@@ -168,7 +181,7 @@ namespace GruppUppgiften.Service
 
         public List<Vehicle> ListVehicles()
         {
-            List<Vehicle> listOfVehicles = dao.ListVehicles();
+            List<Vehicle> listOfVehicles = dao.ListVehicles();//Todo - understand
             if (listOfVehicles?.Any() != true)
             {
                 Console.WriteLine("The list is empty.");

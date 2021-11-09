@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GruppUppgiften;
+using GruppUppgiften.UI;
 
 namespace GruppUppgiften.Data
 {
     class VehicleImpl : IVehicle
     {
         //ToDo - DB is here
-        private readonly List<Vehicle> vehicleList = new();
+        //private readonly List<Vehicle> vehicleList = new();
+        private List<Vehicle> vehicleList = new();
 
+       
         List<Vehicle> IVehicle.ListVehicles()
         {
             return vehicleList;
@@ -85,7 +88,7 @@ namespace GruppUppgiften.Data
         {
             if (!vehicleList.Contains(obj) && obj != null && vehicleList.Count <= 50)
             {
-                vehicleList.Add(obj);
+                vehicleList.Add(obj);/// TOdo- Add
             }
             if (vehicleList.Count > 50)
             {
@@ -93,8 +96,24 @@ namespace GruppUppgiften.Data
             }
             return obj;
         }
+        List<Vehicle> IVehicle.AddVehicleListFromDB(List<Vehicle> objects)
+        {
+            foreach (Vehicle v in objects)
+            {
+                if (!vehicleList.Contains(v) && v != null && vehicleList.Count <= 50)
+                {
+                    vehicleList.Add(v);/// TOdo- Add
 
-        void IVehicle.RemoveVehicle(Vehicle obj)
+                }
+                if (vehicleList.Count > 50)
+                {
+                    Console.WriteLine("The garage is full.");
+                }
+            }
+            return objects;
+        }
+
+            void IVehicle.RemoveVehicle(Vehicle obj)
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {

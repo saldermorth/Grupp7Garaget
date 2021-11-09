@@ -14,24 +14,29 @@ namespace GruppUppgiften.UI
     {
         //private VehicleImpl vehicleImpl = new VehicleImpl();
         const string filePath = @"C:\Users\Nere\source\repos\0-Old projects\Grupp7Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
-        public void TextFileSaver(List<Vehicle> vehicles)
-        {
-                                
-
-          ClientToJsonFile(vehicles);
+        public void TextFileSaver(List<Vehicle> vehicles)        
+        {                               
+           ClientToJsonFile(vehicles);
 
            JsonToClients();
 
-
         }
-        public List<Vehicle> JsonToClients()
+        public static List<Vehicle> JsonToClients()
         {
-           // var vehiclesFromDb = new List<Vehicle>();
-
+            // var vehiclesFromDb = new List<Vehicle>();
+            GarageImpl garageImpl = new GarageImpl();
             if (File.Exists(filePath))
             {
                 String JSONtxt = File.ReadAllText(filePath);
                 var vehiclesFromDb = JsonConvert.DeserializeObject<List<Vehicle>>(JSONtxt);
+                if (vehiclesFromDb != null)
+                {
+                    foreach (Vehicle item in vehiclesFromDb)
+                    {
+                        Vehicle test = garageImpl.AddVehicle(item);
+                    }
+                }
+                
                 return vehiclesFromDb;
             }
             return null;

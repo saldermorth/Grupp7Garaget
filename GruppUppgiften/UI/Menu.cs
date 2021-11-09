@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GruppUppgiften.UI;
+using GruppUppgiften.Data;
 
 namespace GruppUppgiften
 {
@@ -15,6 +16,8 @@ namespace GruppUppgiften
 
         private readonly InputService inputService = new InputService();
         private readonly GarageImpl service = new GarageImpl();
+       
+        
         private List<Vehicle> ListV { get; set; }
 
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
@@ -326,7 +329,7 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[5]);
             PrintWithBorders(menuItems[6]);
 
-            Menu run = new Menu();
+            Menu run = new Menu(); // TODO ????
 
             while (enterPressed == false)
             {
@@ -503,12 +506,14 @@ namespace GruppUppgiften
             }
         }
         public void MainMenu()
+        {
+            
+            
 
-        {   //Counter that starts att oone and removes on if up arrow is pressed 
+            //Counter that starts att oone and removes on if up arrow is pressed 
             //and  adds one if down arrow is pressed
-            JsonWriter db = new JsonWriter();
-            ListV = db.JsonToClients();//Todo - db not filling
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Exit" };
+            ;//Todo - db not filling
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Load From File", "Exit And Save" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -524,7 +529,7 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[3]);
             PrintWithBorders(menuItems[4]);
 
-            while (enterPressed == false && counter <5 )
+            while (enterPressed == false && counter  < 7 )
             {
 
                 keyinfo = Console.ReadKey();
@@ -572,14 +577,16 @@ namespace GruppUppgiften
                             // garaget.AddVehicle(Vehicle obj);                                
                             break;
                         case 4:
-                            Console.WriteLine("To Remove your car");
-                            Console.Write("Input Reg Number : ");
-                            string regNum = inputService.GetString();                            
-                            Vehicle temp = service.SearchVehicle(regNum);
-                            Console.WriteLine(temp);
-                            service.RemoveVehicle(regNum);
-                            Console.WriteLine("Vehicle has been removed");
-                            Console.ReadKey();
+                            service.AddVehicleListFromDB(JsonWriter.JsonToClients());
+                            //Console.WriteLine("To Remove your car");
+                            //Console.Write("Input Reg Number : ");
+                            //string regNum = inputService.GetString();                            
+                            //Vehicle temp = service.SearchVehicle(regNum);
+                            //Console.WriteLine(temp);
+                            //service.RemoveVehicle(regNum);
+                            //Console.WriteLine("Vehicle has been removed");
+                            //Console.ReadKey();
+                            MainMenu();
                             break;
                         case 5:
                             JsonWriter jsonWriter = new JsonWriter();
@@ -794,13 +801,14 @@ namespace GruppUppgiften
             foreach (Vehicle v in ListV)
             {
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
+                Console.WriteLine(v.ToString());
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
             PrintWithBorders("Return To Main Menu");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadKey();
+            MainMenu();
         }
     }
 }

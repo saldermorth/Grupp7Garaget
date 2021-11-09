@@ -1,10 +1,12 @@
 [
   {
+    "MaxTrailerWeight": 1222,
+    "HasTrailer": true,
     "AmountOfWheeles": 4,
-    "Color": "asd",
-    "Reg_Nr": "1 UOE456",
-    "Type": "bus",
-    "Model": "asdas",
-    "Brand": "asd"
+    "Color": "dfg",
+    "Reg_Nr": "2 VVA288",
+    "Type": "truck",
+    "Model": "gdfgd",
+    "Brand": "dfgdf"
   }
 ]
