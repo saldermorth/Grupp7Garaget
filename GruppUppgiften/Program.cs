@@ -9,9 +9,11 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-            InputService regTest = new InputService();
-            MainMenu run = new MainMenu();
-            run.Meny();
+            OutputService run = new OutputService();
+            run.PrintInfoOfAllVehicles();
+            //InputService regTest = new InputService();
+            //MainMenu run = new MainMenu();
+            //run.Meny();
             //run.RollCredits();
             
             //for (int i = 0; i < 100; i++)

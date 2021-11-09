@@ -102,6 +102,8 @@ namespace GruppUppgiften
                             //List All Vehicle
                             break;
                         case 3:
+                            TypeOfVehicleMenu typeOf = new TypeOfVehicleMenu();
+                            typeOf.Menu();
                             //Park                            
                            // garaget.AddVehicle(Vehicle obj);                                
                             break;

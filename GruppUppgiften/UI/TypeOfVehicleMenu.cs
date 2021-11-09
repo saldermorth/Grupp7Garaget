@@ -45,14 +45,17 @@ namespace GruppUppgiften.UI
                     }
                     else
                     {
+                        counter = 6;
                     }
                 }
+               
 
                 if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
+                    if (counter < 6)
                     {
                         counter++;
-                    }
+                    }                    
                     else
                     {
                         counter = 1;
