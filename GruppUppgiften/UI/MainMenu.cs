@@ -12,7 +12,6 @@ namespace GruppUppgiften
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
-
             Console.Write($"{ "",40}{"╔"}");
             for (int i = 0; i < 40; i++)
             {
@@ -100,8 +99,7 @@ namespace GruppUppgiften
                             break;
                         case 4:
                             Console.WriteLine($"Menu {counter} selected");                           
-                            break;
-                        
+                            break;                        
                     }
                     counter = 5; // Måste matcha slutvalet.
                 }
@@ -153,14 +151,11 @@ namespace GruppUppgiften
                 if (counter == 5)//
                 {
                     enterPressed = true;
+                    RollCredits();
                 }
             }
-        }
-        
-        public void FoundMenu()
-        {
-
-        }
+        }        
+       
         public void RollCredits()
         {
             Credits run = new Credits();
