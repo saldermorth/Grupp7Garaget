@@ -506,7 +506,7 @@ namespace GruppUppgiften
             //and  adds one if down arrow is pressed
 
 
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Exit" };
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Roll Credits" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -562,6 +562,7 @@ namespace GruppUppgiften
                             break;
                         case 2:
                             PrintInfoOfAllVehicles();
+                            MainMenu();
                             break;
                         case 3:
                             TypeOfVehicleMenu();
@@ -570,13 +571,17 @@ namespace GruppUppgiften
                             break;
                         case 4:
                             Console.WriteLine("To Remove your car");
-                            Console.Write("Input Reg Number : ");
+                            Console.Write(@"Input Reg Number. In this format (1 ABC123) : ");
                             string regNum = inputService.GetString();                            
                             Vehicle temp = service.SearchVehicle(regNum);
                             Console.WriteLine(temp);
                             service.RemoveVehicle(regNum);
-                            Console.WriteLine("Vehicle has been removed");
+                            if (temp != null)
+                            {
+                                Console.WriteLine("Vehicle has been removed");
+                            }                            
                             Console.ReadKey();
+                            MainMenu();
                             break;
                         case 5:
                             Credits credits = new Credits();
