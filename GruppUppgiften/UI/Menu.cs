@@ -577,7 +577,6 @@ namespace GruppUppgiften
                             service.RemoveVehicle(regNum);
                             Console.WriteLine("Vehicle has been removed");
                             Console.ReadKey();
-
                             break;
                         case 5:
                             Credits credits = new Credits();
