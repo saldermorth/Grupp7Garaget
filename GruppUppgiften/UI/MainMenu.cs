@@ -87,18 +87,17 @@ namespace GruppUppgiften
                     //activate choice                   
                     switch (counter) // Här aktiveras valet.
                     {
-                        case 1:
-                            Console.WriteLine($"Menu {counter} selected");
-                            SearchMenu SubMeny1 = new SearchMenu();
-                            SubMeny1.SearchMeny();
+                        case 1:                            
+                            SearchMenu search = new SearchMenu();
+                            search.Meny();
                             break;
                         case 2:
                             Console.WriteLine($"Menu {counter} selected");
                             //List All Vehicle
                             break;
                         case 3:
-                            Console.WriteLine($"Menu {counter} selected");
-                            //Park
+                            //Park                            
+                           // garaget.AddVehicle(Vehicle obj);                                
                             break;
                         case 4:
                             Console.WriteLine($"Menu {counter} selected");
@@ -156,7 +155,8 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[3]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
-                if (counter == 5)//
+                
+                if (counter == 5)
                 {
                     enterPressed = true;
                 }
