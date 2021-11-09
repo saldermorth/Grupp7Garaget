@@ -1,4 +1,9 @@
-﻿using System;
+﻿using GruppUppgiften.Service;
+using GruppUppgiften;
+using GruppUppgiften.Utilitys;
+using System;
+using System.Collections.Generic;
+using static System.Console;
 
 namespace GruppUppgiften
 {
@@ -6,7 +11,18 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Testar git");
+
+            
+
+            Run();
+            
+            
+
+        }
+        public static void Run()
+        {
+            Menu main = new Menu();
+            main.MainMenu();
         }
     }
 }
