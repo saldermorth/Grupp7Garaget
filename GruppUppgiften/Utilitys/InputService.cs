@@ -14,7 +14,7 @@ namespace GruppUppgiften.Utilitys
             int integer;
             while (!int.TryParse(Console.ReadLine(), out integer))
             {
-                Console.WriteLine("Input of type integer needed");
+                Console.WriteLine("Input of type integer needed!");
                 Console.Write("Try Again : ");
             }
             return integer;
@@ -44,7 +44,7 @@ namespace GruppUppgiften.Utilitys
             string str = Console.ReadLine();
             while (str.Any(char.IsDigit) || string.IsNullOrEmpty(str))
             {
-                Console.WriteLine("Input of type string needed");
+                Console.WriteLine("Input of type string needed!");
                 Console.Write("Try Again : ");
             }
             return str;
@@ -53,6 +53,11 @@ namespace GruppUppgiften.Utilitys
         public bool GetTrueOrFalse()
         {
             string str = Console.ReadLine().ToLower();
+            while (str.Any(char.IsDigit) || string.IsNullOrEmpty(str))
+            {
+                Console.WriteLine("Input of type string needed!");
+                Console.Write("Try Again : ");
+            }
             if (str.Equals("true"))
             {
                 return true;

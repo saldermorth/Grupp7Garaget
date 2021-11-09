@@ -16,7 +16,6 @@ namespace GruppUppgiften
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
-
             Console.Write($"{ "",40}{"╔"}");
             for (int i = 0; i < 40; i++)
             {
@@ -93,8 +92,8 @@ namespace GruppUppgiften
                     switch (counter) // Här aktiveras valet.
                     {
                         case 1:                            
-                            SearchMenu SubMeny1 = new SearchMenu();
-                            SubMeny1.SearchMeny();
+                            SearchMenu search = new SearchMenu();
+                            search.Meny();
                             break;
                         case 2:
                             outService.PrintInfoOfAllVehicles();
@@ -103,6 +102,8 @@ namespace GruppUppgiften
                             //List All Vehicle
                             break;
                         case 3:
+                            TypeOfVehicleMenu typeOf = new TypeOfVehicleMenu();
+                            typeOf.Menu();
                             //Park                            
                            // garaget.AddVehicle(Vehicle obj);                                
                             break;
@@ -161,13 +162,15 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[3]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
-                if (counter == 5)//
+                
+                if (counter == 5)
                 {
                     enterPressed = true;
+                    RollCredits();
                 }
             }
         }
-      
+        
         public void FoundMenu()
         {
 

@@ -1,4 +1,5 @@
 ﻿using GruppUppgiften;
+using GruppUppgiften.Service;
 using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,9 @@ namespace GruppUppgiften.UI
     {
         public void Menu()
         {
+            GarageImpl garageImpl = new GarageImpl();
             MainMenu Main = new MainMenu();
-            string[] menuItems = { "Buss", "Moped", "Motorcycle", "Truck", "Main Menu" };
+            string[] menuItems = { "Buss", "Moped", "Motorcycle", "Truck", "Car" , "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -28,6 +30,7 @@ namespace GruppUppgiften.UI
             Main.PrintWithBorders(menuItems[2]);
             Main.PrintWithBorders(menuItems[3]);
             Main.PrintWithBorders(menuItems[4]);
+            Main.PrintWithBorders(menuItems[5]);
 
 
             MainMenu run = new MainMenu();
@@ -44,22 +47,22 @@ namespace GruppUppgiften.UI
                     }
                     else
                     {
-                        counter = 5;
+                        counter = 6;
                     }
                 }
+               
 
                 if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
-                    if (counter < 5)
+                    if (counter < 6)
                     {
                         counter++;
-                    }
+                    }                    
                     else
                     {
                         counter = 1;
                     }
                 }
-
 
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
@@ -68,24 +71,21 @@ namespace GruppUppgiften.UI
                     switch (counter)
                     {
                         case 1:
-                            FoundMenu temp = new FoundMenu();
-                            temp.SearchMeny();
-                            //SearchVehicle(Vehicle obj);
-                            //Find By RegNr
+                            garageImpl.CreateTypeOfVehicle("bus");
                             break;
                         case 2:
-                            //Find All By Color
-                            //ListTheColor(string color);
+                            garageImpl.CreateTypeOfVehicle("moped");
                             break;
                         case 3:
-                            //Find All By Number Of Wheels
-                            //ListAmountOfWheels(int amount);
+                            garageImpl.CreateTypeOfVehicle("motorcycle");
                             break;
                         case 4:
-                            //Find All By Number Of Seats
-                            //RemoveVehicle(Vehicle obj);
+                            garageImpl.CreateTypeOfVehicle("truck");
                             break;
                         case 5:
+                            garageImpl.CreateTypeOfVehicle("car");                            
+                            break;
+                        case 6:                            
                             run.Meny();
                             //Main Menu
                             break;
@@ -105,6 +105,7 @@ namespace GruppUppgiften.UI
                     Main.PrintWithBorders(menuItems[2]);
                     Main.PrintWithBorders(menuItems[3]);
                     Main.PrintWithBorders(menuItems[4]);
+                    Main.PrintWithBorders(menuItems[5]);
 
                 }
                 if (counter == 2)
@@ -118,6 +119,7 @@ namespace GruppUppgiften.UI
                     Main.PrintWithBorders(menuItems[2]);
                     Main.PrintWithBorders(menuItems[3]);
                     Main.PrintWithBorders(menuItems[4]);
+                    Main.PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 3)
                 {
@@ -130,6 +132,7 @@ namespace GruppUppgiften.UI
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Main.PrintWithBorders(menuItems[3]);
                     Main.PrintWithBorders(menuItems[4]);
+                    Main.PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 4)
                 {
@@ -142,6 +145,7 @@ namespace GruppUppgiften.UI
                     Main.PrintWithBorders(menuItems[3]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Main.PrintWithBorders(menuItems[4]);
+                    Main.PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 5)
                 {
@@ -154,14 +158,29 @@ namespace GruppUppgiften.UI
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Main.PrintWithBorders(menuItems[4]);
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    Main.PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 6)
                 {
+                    Console.Clear();
+                    Main.PrintWithBorders("What Type");
+                    Main.PrintWithBorders(menuItems[0]);
+                    Main.PrintWithBorders(menuItems[1]);
+                    Main.PrintWithBorders(menuItems[2]);
+                    Main.PrintWithBorders(menuItems[3]);
+                    Main.PrintWithBorders(menuItems[4]);
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Main.PrintWithBorders(menuItems[5]);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+
+                }
+                if (counter == 7)
+                {
                     enterPressed = true;
                 }
-               
+
             }
-            
-        }      
+
+        }
     }
 }

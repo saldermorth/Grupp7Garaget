@@ -18,9 +18,8 @@ namespace GruppUppgiften
 
         public override string ToString()
         {
-            return $"Id: {Id}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
-                   $"Color: {Color}. Amount of Wheels: {AmountOfWheeles}. Licens plate: {Reg_Nr}." +
-                   $"Has Horn: {HasHorn}. Is Pedal: {IsPedal}";
+            return String.Format("|{0,8}|{1,16}|{2,10}|{3,18}|{4,11}|{5,23}|{6,19}| Horn:{7,1}| Pedal:{8,5}", Id, Type, Model, Brand, Color, AmountOfWheeles, Reg_Nr, HasHorn, IsPedal);
+                        
         }
     }
 }

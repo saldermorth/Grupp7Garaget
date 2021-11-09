@@ -41,6 +41,11 @@ namespace GruppUppgiften.Service
                         AddVehicle(CreateMoped());
                         break;
                     }
+                case "car":
+                    {
+                        AddVehicle(CreateCar());
+                        break;
+                    }
                 case "bus":
                     {
                         AddVehicle(CreateBus());
