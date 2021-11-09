@@ -92,8 +92,8 @@ namespace GruppUppgiften
                     switch (counter) // Här aktiveras valet.
                     {
                         case 1:                            
-                            SearchMenu SubMeny1 = new SearchMenu();
-                            SubMeny1.SearchMeny();
+                            SearchMenu search = new SearchMenu();
+                            search.Meny();
                             break;
                         case 2:
                             outService.PrintInfoOfAllVehicles();
@@ -160,7 +160,8 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[3]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                 }
-                if (counter == 5)//
+                
+                if (counter == 5)
                 {
                     enterPressed = true;
                     RollCredits();

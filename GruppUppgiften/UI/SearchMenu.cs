@@ -8,7 +8,7 @@ namespace GruppUppgiften.UI
 {
     class SearchMenu
     {                
-        public void SearchMeny()
+        public void Meny()
         {   //Counter that starts att one and removes one if up arrow is pressed 
             //and  adds one if down arrow is pressed
 
@@ -68,7 +68,7 @@ namespace GruppUppgiften.UI
                     {
                         case 1:
                             FoundMenu temp = new FoundMenu();
-                            temp.SearchMeny();
+                            temp.Meny();
                             //SearchVehicle(Vehicle obj);
                             //Find By RegNr
                             break;

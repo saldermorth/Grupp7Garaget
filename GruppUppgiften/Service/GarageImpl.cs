@@ -1,4 +1,5 @@
 ﻿using GruppUppgiften.Data;
+using GruppUppgiften.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften.Service
 {
-    class GarageImpl : IGarage<Vehicle>
+    class GarageImpl : CreateVehicle, IGarage<Vehicle>
     {
         private readonly IVehicle dao = new VehicleImpl();
 
@@ -19,6 +20,42 @@ namespace GruppUppgiften.Service
                 Console.WriteLine("Could not add vehicle.");
             }
             return toAdd;
+        }
+
+        public Vehicle CreateTypeOfVehicle(string type)
+        {
+            switch (type.ToLower())
+            {
+                case "truck":
+                    {
+                        AddVehicle(CreateTruck());
+                        break;
+                    }
+                case "motorcycle":
+                    {
+                        AddVehicle(CreateMotorcycle());
+                        break;
+                    }
+                case "moped":
+                    {
+                        AddVehicle(CreateMoped());
+                        break;
+                    }
+                case "car":
+                    {
+                        AddVehicle(CreateCar());
+                        break;
+                    }
+                case "bus":
+                    {
+                        AddVehicle(CreateBus());
+                        break;
+                    }
+                default:
+                    Console.WriteLine($"You cant create a {type}.");
+                    break;
+            }
+            return null;
         }
 
         public Vehicle FindById(int id)

@@ -9,7 +9,7 @@ namespace GruppUppgiften.UI
     class FoundMenu
     {
         
-        public void SearchMeny()
+        public void Meny()
         {
             MainMenu Main = new MainMenu();
             //Counter that starts att one and removes one if up arrow is pressed 
