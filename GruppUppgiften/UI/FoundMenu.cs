@@ -9,25 +9,27 @@ namespace GruppUppgiften.UI
     class FoundMenu
     {
         
-        public void Meny()
+        public void Meny(Vehicle vehicle)
         {
             MainMenu Main = new MainMenu();
             //Counter that starts att one and removes one if up arrow is pressed 
             //and adds one if down arrow is pressed
-
+            
             string[] menuItems = { "Depart vehicle from garage", "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
-
+            //To do set up DB for testing this menu
             //Menu that shows up when run. Default.
             Console.Clear();
+            
             Main.PrintWithBorders("Found Menu");
             Console.ForegroundColor = ConsoleColor.DarkBlue;
             Main.PrintWithBorders(menuItems[0]);
             Console.ForegroundColor = ConsoleColor.Gray;
             Main.PrintWithBorders(menuItems[1]);
-       
+            Console.WriteLine(vehicle);
+
             MainMenu run = new MainMenu();
 
             while (enterPressed == false)
@@ -67,8 +69,8 @@ namespace GruppUppgiften.UI
                     switch (counter)
                     {
                         case 1:
-                            //Depart vehicle from garage
-                            // RemoveVehicle(Vehicle obj)
+                            // Depart vehicle from garage
+                            //RemoveVehicle(Vehicle obj)
                             break;
                         case 2:                          
                              run.Meny();

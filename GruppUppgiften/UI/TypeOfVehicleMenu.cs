@@ -1,4 +1,5 @@
 ﻿using GruppUppgiften;
+using GruppUppgiften.Service;
 using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace GruppUppgiften.UI
     {
         public void Menu()
         {
+            GarageImpl garageImpl = new GarageImpl();
             MainMenu Main = new MainMenu();
             string[] menuItems = { "Buss", "Moped", "Motorcycle", "Truck", "Car" , "Main Menu" };
             int counter = 1;
@@ -69,28 +71,21 @@ namespace GruppUppgiften.UI
                     switch (counter)
                     {
                         case 1:
-                            FoundMenu temp = new FoundMenu();
-                            //SearchVehicle(Vehicle obj);
-                            //Find By RegNr
+                            garageImpl.CreateTypeOfVehicle("bus");
                             break;
                         case 2:
-                            //Find All By Color
-                            //ListTheColor(string color);
+                            garageImpl.CreateTypeOfVehicle("moped");
                             break;
                         case 3:
-                            //Find All By Number Of Wheels
-                            //ListAmountOfWheels(int amount);
+                            garageImpl.CreateTypeOfVehicle("motorcycle");
                             break;
                         case 4:
-                            //Find All By Number Of Seats
-                            //RemoveVehicle(Vehicle obj);
+                            garageImpl.CreateTypeOfVehicle("truck");
                             break;
                         case 5:
-
-                            //Car
+                            garageImpl.CreateTypeOfVehicle("car");                            
                             break;
-                        case 6:
-                            //Main menu
+                        case 6:                            
                             run.Meny();
                             //Main Menu
                             break;
