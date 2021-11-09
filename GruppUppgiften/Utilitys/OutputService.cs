@@ -11,9 +11,10 @@ namespace GruppUppgiften.Utilitys
     {
 
         private readonly GarageImpl garaget = new GarageImpl();
-
+        
         public void PrintInfoOfAllVehicles()
-        {
+        {                         
+            MainMenu run = new MainMenu();
             Truck test = new(3,"blue", "Truck", "People", "Ford",50, true);
             Bus test2 = new(3, "blue", "Bus", "People", "Scania", 50, true);
             Car test3 = new(3, "blue", "Car", "v70", "Volvo", true, true);
@@ -27,19 +28,32 @@ namespace GruppUppgiften.Utilitys
 
             List<Vehicle> temp = garaget.ListVehicles();
             //ToDO set and reset screeen size
-            //(int amountOfWheeles, string color, string reg_nr, string type, string model, string brand, int maxtrailerweight, bool hastrailer)
-            //string[] C = { "ID", "TYPE", "MODEL", "MANUFACTURER", "COLOR", "NUMBER OF WHEELES", "LICENS NUMBER", "SPECIAL FEUTURES" };
-            //Console.WriteLine(
-            //String.Format("|{0,5}{1,5}{2,15}{3,15}{4,15}{5,15}{6,15}{7,15}{8,15}{9,15}{10,15}{11,15}{12,15}{13,15}{14,15}{15,15}", C[0],"|", C[1], "|", C[2], "|", C[3], "|", C[4], "|", C[5], "|", C[6], "|", C[7],"|"));
-            Console.WriteLine($"|   ID   |      TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES   |");
+            int origHeight = Console.WindowHeight; 
+            int origWidth = Console.WindowWidth;
+            Console.SetWindowSize(150, 55);
+
+            Console.WriteLine($"|   ID   |      TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
          
             foreach (Vehicle V in temp)
             {
-                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
                 Console.WriteLine(V); 
             }
-            Console.ReadLine();
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            run.PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+            run.Meny();
+            //Todo set return to main menu
             
+            //if (ConsoleKey.Enter)
+            //{
+
+            //}
+            Console.SetWindowSize(origWidth, origHeight);
+            Console.ReadKey();
+
 
 
 

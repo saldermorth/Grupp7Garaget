@@ -14,12 +14,10 @@ namespace GruppUppgiften
         }
         public override string ToString()
         {
-            //To do - Formating all classes
-            return $"|  {Id}  | {Type} | {Model}| {Brand}| Color: {Color}. AmountOfWheeles: {AmountOfWheeles}. License plate: {Reg_Nr}." +
-                   $"HasTrailer: {HasTrailer}. MaxTrailerWeight: {MaxTrailerWeight}";
+            
+            return String.Format("|{0,8}|{1,16}|{2,10}|{3,18}|{4,11}|{5,23}|{6,19}| Trailer:{7,1}| Towing Capacity:{8,1}", Id, Type, Model, Brand, Color, AmountOfWheeles, Reg_Nr, HasTrailer, MaxTrailerWeight);
+            
         }
-        //return $"I {Id,-20}. Type: {Type}. Model: {Model}. Manufacturer: {Brand}. " +
-        //           $"Color: {Color}. AmountOfWheeles: {AmountOfWheeles}. License plate: {Reg_Nr}." +
-        //           $"HasTrailer: {HasTrailer}. MaxTrailerWeight: {MaxTrailerWeight}";
+           
     }
 }
