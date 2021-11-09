@@ -1,4 +1,6 @@
-﻿using GruppUppgiften.UI;
+﻿using GruppUppgiften.Service;
+using GruppUppgiften.UI;
+using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,8 @@ namespace GruppUppgiften
 {
     public class MainMenu
     {
+        private readonly GarageImpl garaget = new GarageImpl();
+        private readonly OutputService outService = new OutputService();
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
         public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
         {
@@ -35,6 +39,7 @@ namespace GruppUppgiften
         public void Meny()
         {   //Counter that starts att oone and removes on if up arrow is pressed 
             //and  adds one if down arrow is pressed
+            
            
             string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Exit" };
             int counter = 1;
@@ -82,24 +87,31 @@ namespace GruppUppgiften
                 if (keyinfo.Key == ConsoleKey.Enter)
                 {
                     Console.Clear();
-                    Console.WriteLine("Exit");
+                    //Console.WriteLine("Exit");
                     //activate choice                   
                     switch (counter) // Här aktiveras valet.
                     {
-                        case 1:
-                            Console.WriteLine($"Menu {counter} selected");
+                        case 1:                            
                             SearchMenu SubMeny1 = new SearchMenu();
                             SubMeny1.SearchMeny();
                             break;
                         case 2:
-                            Console.WriteLine($"Menu {counter} selected");
+                            outService.PrintInfoOfAllVehicles();
+                                                       
+                            //Todo
+                            //List All Vehicle
                             break;
                         case 3:
-                            Console.WriteLine($"Menu {counter} selected");
+                            //Park                            
+                           // garaget.AddVehicle(Vehicle obj);                                
                             break;
-                        case 4:
-                            Console.WriteLine($"Menu {counter} selected");                           
-                            break;                        
+                        case 4:                            
+                            //Exit
+                            Credits GO = new Credits();
+                            GO.CreditsLoop();
+                            Console.ReadLine();
+                            break;
+                        
                     }
                     counter = 5; // Måste matcha slutvalet.
                 }
@@ -154,8 +166,12 @@ namespace GruppUppgiften
                     RollCredits();
                 }
             }
-        }        
-       
+        }
+        
+        public void FoundMenu()
+        {
+
+        }
         public void RollCredits()
         {
             Credits run = new Credits();
