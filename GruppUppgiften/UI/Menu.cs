@@ -506,7 +506,7 @@ namespace GruppUppgiften
             //and  adds one if down arrow is pressed
 
 
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Exit" };
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Roll Credits" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
