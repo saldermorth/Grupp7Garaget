@@ -87,10 +87,10 @@ namespace GruppUppgiften.Data
             {
                 vehicleList.Add(obj);
             }
-            if (vehicleList.Count > 50)
-            {
-                Console.WriteLine("The garage is full.");
-            }
+            //if (vehicleList.Count > 50)
+            //{
+            //    Console.WriteLine("The garage is full.");
+            //}
             return obj;
         }
 

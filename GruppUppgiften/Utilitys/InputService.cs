@@ -46,6 +46,7 @@ namespace GruppUppgiften.Utilitys
             {
                 Console.WriteLine("Input of type string needed!");
                 Console.Write("Try Again : ");
+                str = Console.ReadLine();
             }
             return str;
         }
@@ -57,8 +58,9 @@ namespace GruppUppgiften.Utilitys
             {
                 Console.WriteLine("Input of type string needed!");
                 Console.Write("Try Again : ");
+                str = Console.ReadLine();
             }
-            if (str.Equals("true"))
+            if (str.Equals("yes"))
             {
                 return true;
             }

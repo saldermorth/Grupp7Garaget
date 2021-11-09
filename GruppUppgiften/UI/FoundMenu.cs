@@ -8,7 +8,7 @@ namespace GruppUppgiften.UI
 {
     class FoundMenu
     {
-        
+        /*
         public void Meny(Vehicle vehicle)
         {
             MainMenu Main = new MainMenu();
@@ -73,7 +73,7 @@ namespace GruppUppgiften.UI
                             //RemoveVehicle(Vehicle obj)
                             break;
                         case 2:                          
-                             run.Meny();
+                             run.MainMeny();
                             //Main Menu
                             break;
                     }
@@ -106,5 +106,6 @@ namespace GruppUppgiften.UI
                 }
             }
         }
+        */
     }
 }

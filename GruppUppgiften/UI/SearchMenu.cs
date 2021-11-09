@@ -10,7 +10,7 @@ namespace GruppUppgiften.UI
 {
     class SearchMenu
     {            
-        
+        /*
         public void Meny()
         {   //Counter that starts att one and removes one if up arrow is pressed 
             //and  adds one if down arrow is pressed
@@ -94,7 +94,7 @@ namespace GruppUppgiften.UI
                             break;
                         case 5:                            
                             //Main Menu
-                            run.Meny();
+                            run.MainMeny();
                             break;
                     }
                     counter = 6;
@@ -166,6 +166,7 @@ namespace GruppUppgiften.UI
                 }
             }
         }
+        */
     }
 }
 

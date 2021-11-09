@@ -1,16 +1,18 @@
 ﻿using GruppUppgiften.Data;
-using GruppUppgiften.Entity;
+using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace GruppUppgiften.Service
 {
-    class GarageImpl : CreateVehicle, IGarage<Vehicle>
+    class GarageImpl : InputService, IGarage<Vehicle>
     {
         private readonly IVehicle dao = new VehicleImpl();
+
 
         public Vehicle AddVehicle(Vehicle obj)
         {
@@ -24,38 +26,89 @@ namespace GruppUppgiften.Service
 
         public Vehicle CreateTypeOfVehicle(string type)
         {
+            Vehicle temp = null;
             switch (type.ToLower())
             {
                 case "truck":
                     {
-                        AddVehicle(CreateTruck());
+                        Write("Enter in the model: ");
+                        string model = GetString();
+                        Write("Enter in brand: ");
+                        string brand = GetString();
+                        Write("Enter in color: ");
+                        string color = GetString();
+                        Write("Does it have a trailer? Yes or no: ");
+                        bool hasTrailer = GetTrueOrFalse();
+                        Write("What's the max trailer weight?: ");
+                        int weight = GetInt();
+                        temp = new Truck(4, color, "Truck", model, brand, weight, hasTrailer);
                         break;
                     }
                 case "motorcycle":
                     {
-                        AddVehicle(CreateMotorcycle());
-                        break;
+                        Write("Enter in the model: ");
+                        string model = GetString();
+                        Write("Enter in brand: ");
+                        string brand = GetString();
+                        Write("Enter in color: ");
+                        string color = GetString();
+                        Write("Is it an offroad? Yes or no: ");
+                        bool offroad = GetTrueOrFalse();
+                        Write("What's the weight?: ");
+                        int weight = GetInt();
+                        temp = new Motorcycle(2, color, "Motorcycle", model, brand, offroad, weight);
+                        break; 
                     }
                 case "moped":
                     {
-                        AddVehicle(CreateMoped());
+                        Write("Enter in the model: ");
+                        string model = GetString();
+                        Write("Enter in brand: ");
+                        string brand = GetString();
+                        Write("Enter in color: ");
+                        string color = GetString();
+                        Write("Does it have pedal? Yes or no: ");
+                        bool pedal = GetTrueOrFalse();
+                        Write("Does it have a horn? Yes or no: ");
+                        bool hasHorn = GetTrueOrFalse();
+                        temp = new Moped(2, color, "Moped", model, brand, pedal, hasHorn);
                         break;
                     }
                 case "car":
                     {
-                        AddVehicle(CreateCar());
+                        Write("Enter in the model: ");
+                        string model = GetString();
+                        Write("Enter in brand: ");
+                        string brand = GetString();
+                        Write("Enter in color: ");
+                        string color = GetString();
+                        Write("Does it run on petrol? Yes or no: ");
+                        bool petrol = GetTrueOrFalse();
+                        Write("Is it a sport car? Yes or no: ");
+                        bool sport = GetTrueOrFalse();
+                        temp = new Car(4, color, "Car", model, brand, petrol, sport);
                         break;
                     }
                 case "bus":
                     {
-                        AddVehicle(CreateBus());
+                        Write("Enter in the model: ");
+                        string model = GetString();
+                        Write("Enter in brand: ");
+                        string brand = GetString();
+                        Write("Enter in color: ");
+                        string color = GetString();
+                        Write("Does it have Toilets? Yes or no: ");
+                        bool toilets = GetTrueOrFalse();
+                        Write("How many levels on the bus?: ");
+                        int levels = GetInt();
+                        temp = new Bus(4, color, "Bus", model, brand, levels, toilets);
                         break;
                     }
                 default:
                     Console.WriteLine($"You cant create a {type}.");
                     break;
             }
-            return null;
+            return AddVehicle(temp);
         }
 
         public Vehicle FindById(int id)

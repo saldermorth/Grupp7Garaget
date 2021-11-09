@@ -11,6 +11,7 @@ namespace GruppUppgiften.UI
 {
     class TypeOfVehicleMenu
     {
+        /*
         public void Menu()
         {
             GarageImpl garageImpl = new GarageImpl();
@@ -71,7 +72,7 @@ namespace GruppUppgiften.UI
                     switch (counter)
                     {
                         case 1:
-                            garageImpl.CreateTypeOfVehicle("bus");
+                            garageImpl.CreateTypeOfVehicle("bus");                           
                             break;
                         case 2:
                             garageImpl.CreateTypeOfVehicle("moped");
@@ -86,7 +87,7 @@ namespace GruppUppgiften.UI
                             garageImpl.CreateTypeOfVehicle("car");                            
                             break;
                         case 6:                            
-                            run.Meny();
+                            run.MainMeny();
                             //Main Menu
                             break;
 
@@ -182,5 +183,6 @@ namespace GruppUppgiften.UI
             }
 
         }
+      */
     }
 }
