@@ -6,6 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="UI\Credits.cs" />
+    <Compile Remove="UI\FoundMenu.cs" />
+    <Compile Remove="UI\SearchMenu.cs" />
+    <Compile Remove="UI\testMainmenu.cs" />
+    <Compile Remove="UI\TypeOfVehicleMenu.cs" />
+    <Compile Remove="Utilitys\OutputService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Service\" />
   </ItemGroup>
 

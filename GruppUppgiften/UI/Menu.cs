@@ -1,5 +1,5 @@
 ﻿using GruppUppgiften.Service;
-using GruppUppgiften.UI;
+using GruppUppgiften;
 using GruppUppgiften.Utilitys;
 using System;
 using System.Collections.Generic;
@@ -305,12 +305,9 @@ namespace GruppUppgiften
         public void SearchMenu()
         {
             //Counter that starts att one and removes one if up arrow is pressed 
-            //and  adds one if down arrow is pressed
-            FoundMenu foundMenu = new FoundMenu();
-           
-            OutputService outputService = new OutputService();
-            Menu Main = new Menu();
-            string[] menuItems = { "Find By Id", "Find All By Color", "Find All By Number Of Wheels", "Find All By Number Of Seats", "Main Menu" };
+            //and  adds one if down arrow is pressed          
+                      
+            string[] menuItems = { "Find By Brand", "Find By Model", "Find All By Color", "Find All By Number Of Wheels", "Find By Type", "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -325,6 +322,7 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[2]);
             PrintWithBorders(menuItems[3]);
             PrintWithBorders(menuItems[4]);
+            PrintWithBorders(menuItems[5]);
 
             Menu run = new Menu();
 
@@ -340,13 +338,13 @@ namespace GruppUppgiften
                     }
                     else
                     {
-                        counter = 5;
+                        counter = 6;
                     }
                 }
 
                 if (keyinfo.Key == ConsoleKey.DownArrow)
                 {
-                    if (counter < 5)
+                    if (counter < 6)
                     {
                         counter++;
                     }
@@ -364,30 +362,29 @@ namespace GruppUppgiften
                     switch (counter)
                     {
                         case 1:
-                            Console.WriteLine("Write id number : ");
-                            int tempInt = inputService.GetInt();
-                            //var vehicle = garageImpl.SearchVehicle();
-
-                            //foundMenu.Menu(vehicle);// send car with
-                            //SearchVehicle(Vehicle obj);
-                            //Find By RegNr
+                            PrintVehicleByBrand();
+                            //Find By Brand
                             break;
                         case 2:
-                            //Find All By Color
-                            string color = inputService.GetString();
-                            List<Vehicle> vehiclesWhithColor = service.ListTheColor(color);
+                            PrintVehicleByModel();
+                            //Find All By Model                            
 
                             break;
                         case 3:
-                            //Find All By Number Of Wheels
-                            int amount = inputService.GetInt();
-                            service.ListAmountOfWheels(amount);
+                            PrintVehicleByColor();
+                            //Find All By color                            
                             break;
                         case 4:
-                            //Find All By Number Of Seats
-
+                            
+                            //Find by wheeles
+                            PrintVehicleByNumWheeles();
                             break;
                         case 5:
+                            PrintVehicleByType();
+                            //Find by type
+                            break;
+                        case 6:
+
                             //Main Menu
                             MainMenu();
                             break;
@@ -406,6 +403,7 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[2]);
                     PrintWithBorders(menuItems[3]);
                     PrintWithBorders(menuItems[4]);
+                    PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 2)
                 {
@@ -418,6 +416,7 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[2]);
                     PrintWithBorders(menuItems[3]);
                     PrintWithBorders(menuItems[4]);
+                    PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 3)
                 {
@@ -430,6 +429,7 @@ namespace GruppUppgiften
                     Console.ForegroundColor = ConsoleColor.Gray;
                     PrintWithBorders(menuItems[3]);
                     PrintWithBorders(menuItems[4]);
+                    PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 4)
                 {
@@ -442,6 +442,7 @@ namespace GruppUppgiften
                     PrintWithBorders(menuItems[3]);
                     Console.ForegroundColor = ConsoleColor.Gray;
                     PrintWithBorders(menuItems[4]);
+                    PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 5)
                 {
@@ -454,8 +455,22 @@ namespace GruppUppgiften
                     Console.ForegroundColor = ConsoleColor.DarkBlue;
                     PrintWithBorders(menuItems[4]);
                     Console.ForegroundColor = ConsoleColor.Gray;
+                    PrintWithBorders(menuItems[5]);
                 }
                 if (counter == 6)
+                {
+                    Console.Clear();
+                    PrintWithBorders("Search Menu");
+                    PrintWithBorders(menuItems[0]);
+                    PrintWithBorders(menuItems[1]);
+                    PrintWithBorders(menuItems[2]);
+                    PrintWithBorders(menuItems[3]);                    
+                    PrintWithBorders(menuItems[4]);
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;                    
+                    PrintWithBorders(menuItems[5]);
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                }
+                if (counter == 7)
                 {
                     enterPressed = true;
                 }
@@ -520,17 +535,7 @@ namespace GruppUppgiften
                             SearchMenu();
                             break;
                         case 2:
-                            ListV = service.ListVehicles();
-                            Console.WriteLine($"|   ID   |      TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-                            foreach (Vehicle V in ListV)
-                            {
-                                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                                Console.WriteLine(V);
-                            }
-
-                            
-                            Console.ReadKey();
+                            PrintInfoOfAllVehicles();
                             break;
                         case 3:                            
                             TypeOfVehicleMenu();
@@ -541,8 +546,7 @@ namespace GruppUppgiften
                             //Exit                           
                             //Todo credits
                             Console.ReadKey();
-                            break;
-                            
+                            break;                            
 
                     }
                     counter = 5; // Måste matcha slutvalet.
@@ -602,24 +606,123 @@ namespace GruppUppgiften
 
 
         }
-        public void PrintInfoOfAllVehicles()
+
+        //"Find By BrandXXX", "Find By ModelXXX", "Find All By ColorXXX", "Find All By Number Of Wheels", "Find By TypeXXX", "Main Menu" 
+        public void PrintVehicleByNumWheeles()
         {
-            List<Vehicle> temp = service.ListVehicles();
-            //ToDO set and reset screeen size
-            int origHeight = Console.WindowHeight;
-            int origWidth = Console.WindowWidth;
-            // Console.SetWindowSize(150, 55);
+            Console.WriteLine("Enter Number of wheeles");
+            int input = Convert.ToInt32(inputService.GetInt());
 
-            Console.WriteLine($"|   ID   |      TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+            ListV = service.ListAmountOfWheels(input);
 
-            foreach (Vehicle V in temp)
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
             {
                 Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(V);
+                Console.WriteLine(v);
             }
 
             Console.ForegroundColor = ConsoleColor.Blue;
-            //run.PrintWithBorders("Return To Main Menu");
+            PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+        }
+        public void PrintVehicleByColor()
+        {
+            Console.WriteLine("Enter Color");
+            string input = inputService.GetString();
+
+            ListV = service.ListTheColor(input.ToLower());
+
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
+            {
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                Console.WriteLine(v);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+        }
+        public void PrintVehicleByModel()
+        {
+            Console.WriteLine("Enter Model");            
+            string input = inputService.GetString();
+
+            ListV = service.ListModel(input.ToLower());
+
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
+            {
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                Console.WriteLine(v);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+        }
+        public void PrintVehicleByBrand()
+        {
+            Console.WriteLine("Enter Brand");            ;
+            string input = inputService.GetString();
+
+            ListV = service.ListBrand(input.ToLower());
+
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
+            {
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                Console.WriteLine(v);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+        }
+        public void PrintVehicleByType()
+        {
+            Console.WriteLine("Enter type");
+            Console.WriteLine("Bus, Truck, Car, Motorcycle or Moped");
+            string input = inputService.GetString();
+
+            ListV = service.ListTypeOfVehicles(input.ToLower());
+
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
+            {
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                Console.WriteLine(v);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintWithBorders("Return To Main Menu");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ReadKey();
+        }
+        public void PrintInfoOfAllVehicles()
+        {
+            ListV = service.ListVehicles();
+
+            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+            foreach (Vehicle v in ListV)
+            {
+                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------|");
+                Console.WriteLine(v);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            PrintWithBorders("Return To Main Menu");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadKey();
         }

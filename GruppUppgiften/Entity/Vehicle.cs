@@ -9,9 +9,8 @@ namespace GruppUppgiften
 {
     class Vehicle
     {
-        private static int idCounter = 0;
+        
         private static readonly InputService input = new();
-        public int Id { get; set; }
         public int AmountOfWheeles { get; set; }
         public string Color { get; set; }
         public string Reg_Nr { get; set; }
@@ -21,7 +20,6 @@ namespace GruppUppgiften
         
         public Vehicle(int amountofwheeles, string color, string type, string model, string brand)
         {
-            Id = ++idCounter;
             AmountOfWheeles = amountofwheeles;
             Color = color;
             Reg_Nr = input.GetRndRegNr();

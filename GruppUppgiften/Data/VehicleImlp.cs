@@ -87,41 +87,29 @@ namespace GruppUppgiften.Data
             {
                 vehicleList.Add(obj);
             }
-            //if (vehicleList.Count > 50)
-            //{
-            //    Console.WriteLine("The garage is full.");
-            //}
+            if (vehicleList.Count > 50)
+            {
+                Console.WriteLine("The garage is full.");
+            }
             return obj;
         }
 
-        void IVehicle.RemoveVehicle(int id)
+        void IVehicle.RemoveVehicle(Vehicle obj)
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {
-                if (vehicleList[i].Id == id)
+                if (vehicleList[i] == obj)
                 {
                     vehicleList.Remove(vehicleList[i]);
                 }
             }
         }
 
-        Vehicle IVehicle.SearchVehicle(int id, string regNum)
+        Vehicle IVehicle.SearchVehicle(string regNum)
         {
             foreach (Vehicle v in vehicleList)
             {
-                if (v.Id == id && v.Equals(regNum))
-                {
-                    return v;
-                }
-            }
-            return null;
-        }
-
-        Vehicle IVehicle.FindById(int id)
-        {
-            foreach (Vehicle v in vehicleList)
-            {
-                if (v.Id == id)
+                if (v.Equals(regNum))
                 {
                     return v;
                 }

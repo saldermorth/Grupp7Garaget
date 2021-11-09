@@ -15,9 +15,8 @@ namespace GruppUppgiften.Service
         List<Vehicle> ListModel(string model);
         List<Vehicle> ListBrand(string brand);
         Vehicle AddVehicle(Vehicle obj);
-        void RemoveVehicle(Vehicle obj);
-        Vehicle FindById(int id);
-        Vehicle SearchVehicle(Vehicle obj);
+        void RemoveVehicle(string regNr);
+        Vehicle SearchVehicle(string regNr);
         Vehicle CreateTypeOfVehicle(string type);
     }
 }

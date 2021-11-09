@@ -14,7 +14,7 @@ namespace GruppUppgiften
         }
         public override string ToString()
         { 
-            return String.Format("|{0,8}|{1,16}|{2,10}|{3,18}|{4,11}|{5,23}|{6,19}| Offroad:{7,1}| weight:{8,1}",  Id, Type, Model, Brand, Color, AmountOfWheeles, Reg_Nr, IsOffroad, Weight);            
+            return String.Format("|{0,15}|{1,10}|{2,17}|{3,12}|{4,23}|{5,19}| Offroad:{6,1}| weight:{7,1}",  Type, Model, Brand, Color, AmountOfWheeles, Reg_Nr, IsOffroad, Weight);            
         }
         
     }

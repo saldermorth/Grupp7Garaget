@@ -31,6 +31,7 @@ namespace GruppUppgiften.Service
             {
                 case "truck":
                     {
+                        WriteLine("Put in truck details:");
                         Write("Enter in the model: ");
                         string model = GetString();
                         Write("Enter in brand: ");
@@ -41,11 +42,12 @@ namespace GruppUppgiften.Service
                         bool hasTrailer = GetTrueOrFalse();
                         Write("What's the max trailer weight?: ");
                         int weight = GetInt();
-                        temp = new Truck(4, color, "Truck", model, brand, weight, hasTrailer);
+                        temp = new Truck(4, color, "truck", model, brand, weight, hasTrailer);
                         break;
                     }
                 case "motorcycle":
                     {
+                        WriteLine("Put in motorcycle details:");
                         Write("Enter in the model: ");
                         string model = GetString();
                         Write("Enter in brand: ");
@@ -56,11 +58,12 @@ namespace GruppUppgiften.Service
                         bool offroad = GetTrueOrFalse();
                         Write("What's the weight?: ");
                         int weight = GetInt();
-                        temp = new Motorcycle(2, color, "Motorcycle", model, brand, offroad, weight);
+                        temp = new Motorcycle(2, color, "motorcycle", model, brand, offroad, weight);
                         break; 
                     }
                 case "moped":
                     {
+                        WriteLine("Put in moped details:");
                         Write("Enter in the model: ");
                         string model = GetString();
                         Write("Enter in brand: ");
@@ -71,11 +74,12 @@ namespace GruppUppgiften.Service
                         bool pedal = GetTrueOrFalse();
                         Write("Does it have a horn? Yes or no: ");
                         bool hasHorn = GetTrueOrFalse();
-                        temp = new Moped(2, color, "Moped", model, brand, pedal, hasHorn);
+                        temp = new Moped(2, color, "moped", model, brand, pedal, hasHorn);
                         break;
                     }
                 case "car":
                     {
+                        WriteLine("Put in car details:");
                         Write("Enter in the model: ");
                         string model = GetString();
                         Write("Enter in brand: ");
@@ -86,11 +90,12 @@ namespace GruppUppgiften.Service
                         bool petrol = GetTrueOrFalse();
                         Write("Is it a sport car? Yes or no: ");
                         bool sport = GetTrueOrFalse();
-                        temp = new Car(4, color, "Car", model, brand, petrol, sport);
+                        temp = new Car(4, color, "car", model, brand, petrol, sport);
                         break;
                     }
                 case "bus":
                     {
+                        WriteLine("Put in bus details:");
                         Write("Enter in the model: ");
                         string model = GetString();
                         Write("Enter in brand: ");
@@ -101,7 +106,7 @@ namespace GruppUppgiften.Service
                         bool toilets = GetTrueOrFalse();
                         Write("How many levels on the bus?: ");
                         int levels = GetInt();
-                        temp = new Bus(4, color, "Bus", model, brand, levels, toilets);
+                        temp = new Bus(4, color, "bus", model, brand, levels, toilets);
                         break;
                     }
                 default:
@@ -109,16 +114,6 @@ namespace GruppUppgiften.Service
                     break;
             }
             return AddVehicle(temp);
-        }
-
-        public Vehicle FindById(int id)
-        {
-            Vehicle toFind = dao.FindById(id);
-            if (toFind == null)
-            {
-                Console.WriteLine($"Could not find vehicle with ID {id}.");
-            }
-            return toFind;
         }
 
         public List<Vehicle> ListAmountOfWheels(int amount)
@@ -181,15 +176,15 @@ namespace GruppUppgiften.Service
             return listOfVehicles;
         }
 
-        public void RemoveVehicle(Vehicle obj)
+        public void RemoveVehicle(string regNr)
         {
-            Vehicle toRemove = FindById(obj.Id);
-            dao.RemoveVehicle(toRemove.Id);
+            Vehicle toRemove = dao.SearchVehicle(regNr);
+            dao.RemoveVehicle(toRemove);
         }
 
-        public Vehicle SearchVehicle(Vehicle obj)
+        public Vehicle SearchVehicle(string regNr)
         {
-            Vehicle toFind = dao.SearchVehicle(obj.Id, obj.Reg_Nr);
+            Vehicle toFind = dao.SearchVehicle(regNr);
             if (toFind == null)
             {
                 Console.WriteLine("Could not find the vehicle.");
