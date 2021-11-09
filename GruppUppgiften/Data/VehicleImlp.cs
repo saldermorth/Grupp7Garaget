@@ -9,7 +9,7 @@ namespace GruppUppgiften.Data
 {
     class VehicleImpl : IVehicle
     {
-        //DB
+        //ToDo - DB is here
         private readonly List<Vehicle> vehicleList = new();
 
         List<Vehicle> IVehicle.ListVehicles()

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GruppUppgiften.UI;
 
 namespace GruppUppgiften
 {
@@ -502,10 +503,11 @@ namespace GruppUppgiften
             }
         }
         public void MainMenu()
+
         {   //Counter that starts att oone and removes on if up arrow is pressed 
             //and  adds one if down arrow is pressed
-
-
+            JsonWriter db = new JsonWriter();
+            ListV = db.JsonToClients();//Todo - db not filling
             string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Exit" };
             int counter = 1;
             bool enterPressed = false;
@@ -522,8 +524,9 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[3]);
             PrintWithBorders(menuItems[4]);
 
-            while (enterPressed == false)
+            while (enterPressed == false && counter <5 )
             {
+
                 keyinfo = Console.ReadKey();
 
                 if (keyinfo.Key == ConsoleKey.UpArrow)
@@ -579,11 +582,11 @@ namespace GruppUppgiften
                             Console.ReadKey();
                             break;
                         case 5:
+                            JsonWriter jsonWriter = new JsonWriter();
+                            jsonWriter.TextFileSaver(ListV); //Save to menu
                             Credits credits = new Credits();
                             credits.CreditsLoop();
-
                             break;
-
                     }
                     counter = 6; // Måste matcha slutvalet.
                 }
@@ -656,7 +659,7 @@ namespace GruppUppgiften
             }
 
 
-        }
+        }// Här dör appen
 
         //"Find By BrandXXX", "Find By ModelXXX", "Find All By ColorXXX", "Find All By Number Of Wheels", "Find By TypeXXX", "Main Menu" 
         public void PrintAVehicle()
@@ -677,6 +680,8 @@ namespace GruppUppgiften
             PrintWithBorders("Return To Main Menu");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadKey();
+           
+
         }
         public void PrintVehicleByNumWheeles()
         {
@@ -757,6 +762,7 @@ namespace GruppUppgiften
             PrintWithBorders("Return To Main Menu");
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ReadKey();
+
         }
         public void PrintVehicleByType()
         {
