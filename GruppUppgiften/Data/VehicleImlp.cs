@@ -98,9 +98,10 @@ namespace GruppUppgiften.Data
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {
-                if (vehicleList[i] == obj)
+                if (vehicleList[i].Equals(obj))
                 {
-                    vehicleList.Remove(vehicleList[i]);
+                    Vehicle temp = vehicleList[i];
+                    vehicleList.Remove(temp);
                 }
             }
         }
@@ -109,7 +110,7 @@ namespace GruppUppgiften.Data
         {
             foreach (Vehicle v in vehicleList)
             {
-                if (v.Equals(regNum))
+                if (v.Reg_Nr.Equals(regNum))
                 {
                     return v;
                 }

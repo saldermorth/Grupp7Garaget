@@ -178,7 +178,7 @@ namespace GruppUppgiften.Service
 
         public void RemoveVehicle(string regNr)
         {
-            Vehicle toRemove = dao.SearchVehicle(regNr);
+            Vehicle toRemove = SearchVehicle(regNr);
             dao.RemoveVehicle(toRemove);
         }
 

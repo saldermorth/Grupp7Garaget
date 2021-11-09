@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="UI\Credits.cs" />
     <Compile Remove="UI\FoundMenu.cs" />
     <Compile Remove="UI\SearchMenu.cs" />
     <Compile Remove="UI\testMainmenu.cs" />

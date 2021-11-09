@@ -42,9 +42,9 @@ namespace GruppUppgiften.Utilitys
         public string GetString()
         {
             string str = Console.ReadLine();
-            while (str.Any(char.IsDigit) || string.IsNullOrEmpty(str))
+            while (string.IsNullOrEmpty(str))
             {
-                Console.WriteLine("Input of type string needed!");
+                Console.WriteLine("The field can't be empty.");
                 Console.Write("Try Again : ");
                 str = Console.ReadLine();
             }
@@ -54,9 +54,9 @@ namespace GruppUppgiften.Utilitys
         public bool GetTrueOrFalse()
         {
             string str = Console.ReadLine().ToLower();
-            while (str.Any(char.IsDigit) || string.IsNullOrEmpty(str))
+            while (string.IsNullOrEmpty(str))
             {
-                Console.WriteLine("Input of type string needed!");
+                Console.WriteLine("The field can't be empty.");
                 Console.Write("Try Again : ");
                 str = Console.ReadLine();
             }
