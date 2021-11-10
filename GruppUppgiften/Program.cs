@@ -11,8 +11,8 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-
-            
+            Console.SetBufferSize(155,40);
+            Console.SetWindowSize(155, 40);
 
             Run();
             

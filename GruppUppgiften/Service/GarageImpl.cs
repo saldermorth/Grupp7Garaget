@@ -187,7 +187,8 @@ namespace GruppUppgiften.Service
             Vehicle toFind = dao.SearchVehicle(regNr);
             if (toFind == null)
             {
-                Console.WriteLine("Could not find the vehicle.");
+                
+                Console.WriteLine("\nCould not find the vehicle.\n");
             }
             return toFind;
         }

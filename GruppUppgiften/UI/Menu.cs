@@ -386,6 +386,7 @@ namespace GruppUppgiften
                             break;
                         case 6:
                             PrintAVehicle();
+
                             //Find a Vehicle
                             break;
                         case 7:
@@ -571,7 +572,7 @@ namespace GruppUppgiften
                             break;
                         case 4:
                             Console.WriteLine("To Remove your car");
-                            Console.Write(@"Input Reg Number. In this format (1 ABC123) : ");
+                            Console.Write(@"Input Reg Number. In This Format (1 ABC123) : ");
                             string regNum = inputService.GetString();                            
                             Vehicle temp = service.SearchVehicle(regNum);
                             Console.WriteLine(temp);
@@ -667,7 +668,7 @@ namespace GruppUppgiften
         public void PrintAVehicle()
         {
             Console.WriteLine("To Find Your Car");
-            Console.Write("Enter RegNumber : ");
+            Console.Write("Enter RegNumber. In This Format (1 ABC123) : ");
 
             string input = inputService.GetString();
             Vehicle temp = service.SearchVehicle(input);
