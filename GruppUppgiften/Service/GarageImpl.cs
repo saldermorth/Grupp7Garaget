@@ -42,7 +42,7 @@ namespace GruppUppgiften.Service
                         bool hasTrailer = GetTrueOrFalse();
                         Write("What's the max trailer weight?: ");
                         int weight = GetInt();
-                        temp = new Truck(4, color, "truck", model, brand, weight, hasTrailer);
+                        temp = new Truck(4, color.ToLower(), "truck", model.ToLower(), brand.ToLower(), weight, hasTrailer);
                         break;
                     }
                 case "motorcycle":
@@ -58,7 +58,7 @@ namespace GruppUppgiften.Service
                         bool offroad = GetTrueOrFalse();
                         Write("What's the weight?: ");
                         int weight = GetInt();
-                        temp = new Motorcycle(2, color, "motorcycle", model, brand, offroad, weight);
+                        temp = new Motorcycle(2, color.ToLower(), "motorcycle", model.ToLower(), brand.ToLower(), offroad, weight);
                         break; 
                     }
                 case "moped":
@@ -74,7 +74,7 @@ namespace GruppUppgiften.Service
                         bool pedal = GetTrueOrFalse();
                         Write("Does it have a horn? Yes or no: ");
                         bool hasHorn = GetTrueOrFalse();
-                        temp = new Moped(2, color, "moped", model, brand, pedal, hasHorn);
+                        temp = new Moped(2, color.ToLower(), "moped", model.ToLower(), brand.ToLower(), pedal, hasHorn);
                         break;
                     }
                 case "car":
@@ -90,7 +90,7 @@ namespace GruppUppgiften.Service
                         bool petrol = GetTrueOrFalse();
                         Write("Is it a sport car? Yes or no: ");
                         bool sport = GetTrueOrFalse();
-                        temp = new Car(4, color, "car", model, brand, petrol, sport);
+                        temp = new Car(4, color.ToLower(), "car", model.ToLower(), brand.ToLower(), petrol, sport);
                         break;
                     }
                 case "bus":
@@ -106,7 +106,7 @@ namespace GruppUppgiften.Service
                         bool toilets = GetTrueOrFalse();
                         Write("How many levels on the bus?: ");
                         int levels = GetInt();
-                        temp = new Bus(4, color, "bus", model, brand, levels, toilets);
+                        temp = new Bus(4, color.ToLower(), "bus", model.ToLower(), brand.ToLower(), levels, toilets);
                         break;
                     }
                 default:
@@ -187,7 +187,8 @@ namespace GruppUppgiften.Service
             Vehicle toFind = dao.SearchVehicle(regNr);
             if (toFind == null)
             {
-                Console.WriteLine("Could not find the vehicle.");
+                
+                Console.WriteLine("\nCould not find the vehicle.\n");
             }
             return toFind;
         }

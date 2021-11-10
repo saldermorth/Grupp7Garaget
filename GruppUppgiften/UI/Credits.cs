@@ -11,63 +11,57 @@ namespace GruppUppgiften
     {
         public void CreditsLoop()
         {
-          
-                for (int i = 0; i < 3960; i++)
+            //for (int i = 0; i < 3960; i++) !!!
+                for (int i = 0; i < 6355; i++)
                 {
-                    randChar();
+                    RandChar();
                 }
-            NameWriter();
+                NameWriter();
         }
-        public void NameWriter()
+        public static void NameWriter()
         {
             Console.ForegroundColor = ConsoleColor.Black;
             string[] theTeam = { "Anton Edholm", "Emre Ersoylu", "Gustav Berg", "Heja Leven Darwich", "Ronny Fagerlund", "Simon Hjulström" };
             
-            Console.SetCursorPosition(45,2);
+            Console.SetCursorPosition(65,2);
             Console.Write("_______/THE TEAM\\_______");
             int posY = 4;
             for (int i = 0; i < theTeam.Length; i++)
-            {                
-                Console.SetCursorPosition(50, posY);
+            {
+                Console.SetCursorPosition(70, posY);
                 Console.Write("█ ");
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(theTeam[i]);
+               Console.BackgroundColor = ConsoleColor.White;
+               Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write(" █");
                 posY += 3;
-                Thread.Sleep(1700);
-            }            
+                Thread.Sleep(1000);
+                }
+            Console.ReadKey();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Environment.Exit(-1);
         }
-        public void randChar()
+        public static void RandChar()
         {           
-            Random rnd2 = new Random();
+            Random rnd2 = new();
             int randChar = rnd2.Next(1, 5);
-            char k = ' ';
-
-            switch (randChar)
+            //VS want us to try using switch expression
+            char k = randChar switch
             {
-                case 1:
-                    k = '¥';
-                    break;
-                case 2:
-                    k = 'Œ';
-                    break;
-                case 3:
-                    k = 'Ŧ';
-                    break;
-                case 4:
-                    k = 'Ƣ';
-                    break;
-                default:
-                    k = ' ';
-                    break;
-            }
-
-            rgbPrint(k);
-            
-
+                1 => '¥',
+                2 => 'Œ',
+                3 => 'Ŧ',
+                4 => 'Ƣ',
+                _ => ' ',
+            };
+            RgbPrint(k);
         }
-        public void rgbPrint(char c)
+        public static void RgbPrint(char c)
         {
-            Random rnd = new Random();            
+            Random rnd = new();            
             Console.BackgroundColor = ConsoleColor.White;
 
             int randInt = rnd.Next(1, 9);
