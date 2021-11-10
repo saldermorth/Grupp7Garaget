@@ -17,4 +17,8 @@
     <Folder Include="Service\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="C:\Users\berg_\OneDrive\Skrivbord\ClassDiagramGrupp 7.cd" Link="ClassDiagramGrupp 7.cd" />
+  </ItemGroup>
+
 </Project>
