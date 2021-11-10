@@ -14,11 +14,11 @@ namespace GruppUppgiften
             //for (int i = 0; i < 3960; i++) !!!
                 for (int i = 0; i < 6355; i++)
                 {
-                    randChar();
+                    RandChar();
                 }
-            NameWriter();
+                NameWriter();
         }
-        public void NameWriter()
+        public static void NameWriter()
         {
             Console.ForegroundColor = ConsoleColor.Black;
             string[] theTeam = { "Anton Edholm", "Emre Ersoylu", "Gustav Berg", "Heja Leven Darwich", "Ronny Fagerlund", "Simon Hjulström" };
@@ -44,38 +44,24 @@ namespace GruppUppgiften
             Console.ForegroundColor = ConsoleColor.Gray;
             Environment.Exit(-1);
         }
-        public void randChar()
+        public static void RandChar()
         {           
-            Random rnd2 = new Random();
+            Random rnd2 = new();
             int randChar = rnd2.Next(1, 5);
-            char k = ' ';
-
-            switch (randChar)
+            //VS want us to try using switch expression
+            char k = randChar switch
             {
-                case 1:
-                    k = '¥';
-                    break;
-                case 2:
-                    k = 'Œ';
-                    break;
-                case 3:
-                    k = 'Ŧ';
-                    break;
-                case 4:
-                    k = 'Ƣ';
-                    break;
-                default:
-                    k = ' ';
-                    break;
-            }
-
-            rgbPrint(k);
-            
-
+                1 => '¥',
+                2 => 'Œ',
+                3 => 'Ŧ',
+                4 => 'Ƣ',
+                _ => ' ',
+            };
+            RgbPrint(k);
         }
-        public void rgbPrint(char c)
+        public static void RgbPrint(char c)
         {
-            Random rnd = new Random();            
+            Random rnd = new();            
             Console.BackgroundColor = ConsoleColor.White;
 
             int randInt = rnd.Next(1, 9);

@@ -12,12 +12,14 @@ namespace GruppUppgiften
     public class Menu
     {
 
-        private readonly InputService inputService = new InputService();
-        private readonly GarageImpl service = new GarageImpl();
+        private readonly InputService inputService = new();
+        private readonly GarageImpl service = new();
+        private readonly Credits credits = new();
         private List<Vehicle> ListV { get; set; }
 
-        //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
-        public void PrintWithBorders(string k)//Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
+        //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod.
+        //Grafisk utskrift. Tar emot ord eller korta meningar. Omringar ordet med en ram och skriver ut. Nollställer foreground färgen i slutet.
+        public static void PrintWithBorders(string k)
         {
             Console.Write($"{ "",40}{"╔"}");
             for (int i = 0; i < 40; i++)
@@ -39,103 +41,7 @@ namespace GruppUppgiften
             Console.ResetColor();
 
         }
-        public void FoundMenu()
-        {
-            Menu Main = new Menu();
-            //Counter that starts att one and removes one if up arrow is pressed 
-            //and adds one if down arrow is pressed
-
-            string[] menuItems = { "Depart vehicle from garage", "Main Menu" };
-            int counter = 1;
-            bool enterPressed = false;
-            ConsoleKeyInfo keyinfo;
-            //To do set up DB for testing this menu
-            //Menu that shows up when run. Default.
-            Console.Clear();
-
-            Main.PrintWithBorders("Found Menu");
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            Main.PrintWithBorders(menuItems[0]);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Main.PrintWithBorders(menuItems[1]);
-            Console.WriteLine();
-
-            Menu run = new Menu();
-
-            while (enterPressed == false)
-            {
-                keyinfo = Console.ReadKey();
-
-                if (keyinfo.Key == ConsoleKey.UpArrow)
-                {
-                    if (counter > 1)
-                    {
-                        counter--;
-                    }
-                    else
-                    {
-                        counter = 2;
-                    }
-                }
-
-                if (keyinfo.Key == ConsoleKey.DownArrow)
-                {
-                    if (counter < 2)
-                    {
-                        counter++;
-                    }
-                    else
-                    {
-                        counter = 1;
-                    }
-                }
-
-
-                if (keyinfo.Key == ConsoleKey.Enter)
-                {
-                    Console.Clear();
-
-                    //activate choice                   
-                    switch (counter)
-                    {
-                        case 1:
-                            // Depart vehicle from garage
-                            //RemoveVehicle(Vehicle obj)
-                            break;
-                        case 2:
-                            run.MainMenu();
-                            //Main Menu
-                            break;
-                    }
-                    counter = 6;
-                }
-
-                if (counter == 1)
-                {
-                    Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Main.PrintWithBorders(menuItems[0]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    Main.PrintWithBorders(menuItems[1]);
-
-                }
-                if (counter == 2)
-                {
-                    Console.Clear();
-                    Main.PrintWithBorders("Search Menu");
-                    Main.PrintWithBorders(menuItems[0]);
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    Main.PrintWithBorders(menuItems[1]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                }
-                if (counter == 3)
-                {
-                    enterPressed = true;
-                }
-            }
-        }
+        
         public void TypeOfVehicleMenu()
         {
             string[] menuItems = { "Bus", "Moped", "Motorcycle", "Truck", "Car", "Main Menu" };
@@ -307,7 +213,7 @@ namespace GruppUppgiften
             //Counter that starts att one and removes one if up arrow is pressed 
             //and  adds one if down arrow is pressed          
 
-            string[] menuItems = { "Find By Brand", "Find By Model", "Find All By Color", "Find All By Number Of Wheels", "Find By Type", "Find A Vehicle", "Main Menu" };
+            string[] menuItems = { "Find All By Brand", "Find All By Model", "Find All By Color", "Find All By Number Of Wheels", "Find All By Type", "Find A Vehicle", "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -325,7 +231,7 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[5]);
             PrintWithBorders(menuItems[6]);
 
-            Menu run = new Menu();
+            Menu run = new();
 
             while (enterPressed == false)
             {
@@ -507,7 +413,7 @@ namespace GruppUppgiften
             //and  adds one if down arrow is pressed
 
 
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Roll Credits" };
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Exit & Roll Credits" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -585,9 +491,7 @@ namespace GruppUppgiften
                             MainMenu();
                             break;
                         case 5:
-                            Credits credits = new Credits();
                             credits.CreditsLoop();
-
                             break;
 
                     }
