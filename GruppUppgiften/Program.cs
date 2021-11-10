@@ -11,17 +11,17 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-            Console.SetBufferSize(155,40);
-            Console.SetWindowSize(155, 40);
-
             Run();
-            
-            
-
         }
         public static void Run()
         {
-            Menu main = new Menu();
+#pragma warning disable CA1416 // Validate platform compatibility
+            SetBufferSize(155, 40); // Ignores warning
+#pragma warning restore CA1416 // Validate platform compatibility
+#pragma warning disable CA1416 // Validate platform compatibility
+            SetWindowSize(155, 40);// Ignores warning
+#pragma warning restore CA1416 // Validate platform compatibility
+            Menu main = new();
             main.MainMenu();
         }
     }
