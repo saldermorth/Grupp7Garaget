@@ -307,7 +307,7 @@ namespace GruppUppgiften
             //Counter that starts att one and removes one if up arrow is pressed 
             //and  adds one if down arrow is pressed          
 
-            string[] menuItems = { "Find By Brand", "Find By Model", "Find All By Color", "Find All By Number Of Wheels", "Find By Type", "Find A Vehicle", "Main Menu" };
+            string[] menuItems = { "Find By Brand", "Find By Model", "Find By Color", "Find By Number Of Wheels", "Find By Type", "Find A Vehicle", "Main Menu" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
