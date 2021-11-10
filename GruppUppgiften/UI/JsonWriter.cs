@@ -13,14 +13,18 @@ namespace GruppUppgiften.UI
     class JsonWriter 
     {
         //private VehicleImpl vehicleImpl = new VehicleImpl();
+        //C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json
         const string filePath = @"C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
+        //\UI\json Files
+        //..\\FolderIcon\\Folder.ico"
+        //./Resources/someText.txt)
         public void TextFileSaver(List<Vehicle> vehicles)        
         {                               
            ClientToJsonFile(vehicles);
 
            JsonToClients();
 
-        }
+        }//To do dont save if list is empty
         public static List<Vehicle> JsonToClients()
         {
             // var vehiclesFromDb = new List<Vehicle>();
