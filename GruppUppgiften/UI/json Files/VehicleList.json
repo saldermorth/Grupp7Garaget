@@ -1,10 +1,12 @@
 [
   {
-    "AmountOfWheeles": 2,
-    "Color": "ssss",
-    "Reg_Nr": "1 PXS537",
-    "Type": "moped",
-    "Model": "aaaaa",
+    "HasToielts": true,
+    "Levels": 1,
+    "AmountOfWheeles": 4,
+    "Color": "aaaaaaa",
+    "Reg_Nr": "1 DLQ435",
+    "Type": "bus",
+    "Model": "aaaaaa",
     "Brand": "sssss"
   }
 ]

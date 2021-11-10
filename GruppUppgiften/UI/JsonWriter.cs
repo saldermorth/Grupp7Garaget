@@ -27,24 +27,21 @@ namespace GruppUppgiften.UI
         }//To do dont save if list is empty
         public List<Vehicle> JsonToClients()
         {
-            // var vehiclesFromDb = new List<Vehicle>();
+             List<Vehicle> vehiclesFromDb = null;
             
             if (File.Exists(filePath))//ToDO file do not exists
             {
                 String JSONtxt = File.ReadAllText(filePath);
-                var vehiclesFromDb = JsonConvert.DeserializeObject<List<Vehicle>>(JSONtxt);
+                vehiclesFromDb = JsonConvert.DeserializeObject<List<Vehicle>>(JSONtxt);
                 if (vehiclesFromDb != null)
                 {
                     foreach (Vehicle item in vehiclesFromDb)
-                    {
-                        Vehicle test = AddVehicle(item);
-                        
+                    {                        
+                        AddVehicle(item);                        
                     }
-                }
-                
-                return vehiclesFromDb;
+                }                
             }
-            return null;
+            return vehiclesFromDb;
         }
 
         public void ClientToJsonFile(List<Vehicle> vehicles)// List of objects into Jsonfile
