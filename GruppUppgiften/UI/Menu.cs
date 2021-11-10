@@ -12,11 +12,12 @@ using System.Threading;
 
 namespace GruppUppgiften
 {
-    public class Menu
+    class Menu : JsonWriter
     {
         private int loadFilecounter = 1;
-        private readonly InputService inputService = new InputService();
-        private readonly GarageImpl service = new GarageImpl();
+        private readonly InputService inputService = new ();
+        private readonly GarageImpl service = new ();
+        //private readonly JsonWriter jsonWriter = new ();
 
 
         private List<Vehicle> ListV { get; set; }
@@ -600,7 +601,8 @@ namespace GruppUppgiften
                                 //Load from file
                                 if (loadFilecounter>0)
                                 {
-                                    service.AddVehicleListFromDB(JsonWriter.JsonToClients());
+                                    List<Vehicle> JsonList = JsonToClients();
+                                    service.AddVehicleListFromDB(JsonList);
                                     loadFilecounter--;
                                 }
                                 else

@@ -11,9 +11,8 @@ namespace GruppUppgiften.Data
     class VehicleImpl : IVehicle
     {
         //ToDo - DB is here
-        //private readonly List<Vehicle> vehicleList = new();
-        private List<Vehicle> vehicleList = new();
-
+        
+        private readonly List<Vehicle> vehicleList = new();
        
         List<Vehicle> IVehicle.ListVehicles()
         {
@@ -103,7 +102,6 @@ namespace GruppUppgiften.Data
                 if (!vehicleList.Contains(v) && v != null && vehicleList.Count <= 50)
                 {
                     vehicleList.Add(v);/// TOdo- Add
-
                 }
                 if (vehicleList.Count > 50)
                 {

@@ -1,12 +1,10 @@
 [
   {
-    "HasToielts": true,
-    "Levels": 2,
-    "AmountOfWheeles": 4,
-    "Color": "asd",
-    "Reg_Nr": "1 PML680",
-    "Type": "bus",
-    "Model": "asdas",
-    "Brand": "asda"
+    "AmountOfWheeles": 2,
+    "Color": "ssss",
+    "Reg_Nr": "1 PXS537",
+    "Type": "moped",
+    "Model": "aaaaa",
+    "Brand": "sssss"
   }
 ]

@@ -19,7 +19,6 @@ namespace GruppUppgiften.Service
             {
                 foreach (Vehicle v in objects)
                 {
-
                     AddVehicle(v);
 
                     if (objects.Count > 50)

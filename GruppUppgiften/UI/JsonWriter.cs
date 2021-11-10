@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften.UI
 {
-    class JsonWriter 
+    class JsonWriter : GarageImpl
     {
         //private VehicleImpl vehicleImpl = new VehicleImpl();
         //C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json
@@ -25,10 +25,10 @@ namespace GruppUppgiften.UI
            JsonToClients();
 
         }//To do dont save if list is empty
-        public static List<Vehicle> JsonToClients()
+        public List<Vehicle> JsonToClients()
         {
             // var vehiclesFromDb = new List<Vehicle>();
-            GarageImpl garageImpl = new GarageImpl();
+            
             if (File.Exists(filePath))//ToDO file do not exists
             {
                 String JSONtxt = File.ReadAllText(filePath);
@@ -37,8 +37,8 @@ namespace GruppUppgiften.UI
                 {
                     foreach (Vehicle item in vehiclesFromDb)
                     {
-                        Vehicle test = garageImpl.AddVehicle(item);
-                        Console.WriteLine(item.Brand);
+                        Vehicle test = AddVehicle(item);
+                        
                     }
                 }
                 
@@ -47,7 +47,7 @@ namespace GruppUppgiften.UI
             return null;
         }
 
-        public static void ClientToJsonFile(List<Vehicle> vehicles)// List of objects into Jsonfile
+        public void ClientToJsonFile(List<Vehicle> vehicles)// List of objects into Jsonfile
         {
             
             var json = JsonConvert.SerializeObject(vehicles);

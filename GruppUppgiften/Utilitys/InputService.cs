@@ -18,6 +18,7 @@ namespace GruppUppgiften.Utilitys
                 Console.Write("Try Again : ");
             }
             return integer;
+
         }
 
         public string GetRndRegNr()
