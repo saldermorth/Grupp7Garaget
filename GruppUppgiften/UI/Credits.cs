@@ -11,7 +11,7 @@ namespace GruppUppgiften
     {
         public void CreditsLoop()
         {
-            //for (int i = 0; i < 3960; i++)
+            //for (int i = 0; i < 3960; i++) !!!
                 for (int i = 0; i < 6355; i++)
                 {
                     randChar();
