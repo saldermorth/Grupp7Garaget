@@ -29,13 +29,13 @@ namespace GruppUppgiften
             for (int i = 0; i < theTeam.Length; i++)
             {
                 Console.SetCursorPosition(70, posY);
-                Console.Write("█ ");
+                Console.Write("██ ");
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(theTeam[i]);
                Console.BackgroundColor = ConsoleColor.White;
                Console.ForegroundColor = ConsoleColor.Black;
-                Console.Write(" █");
+                Console.Write(" ██");
                 posY += 3;
                 Thread.Sleep(1000);
                 }

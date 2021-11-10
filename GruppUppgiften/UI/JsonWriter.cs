@@ -13,7 +13,7 @@ namespace GruppUppgiften.UI
     class JsonWriter 
     {
         //private VehicleImpl vehicleImpl = new VehicleImpl();
-        const string filePath = @"C:\Users\Nere\source\repos\0-Old projects\Grupp7Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
+        const string filePath = @"C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
         public void TextFileSaver(List<Vehicle> vehicles)        
         {                               
            ClientToJsonFile(vehicles);
@@ -25,7 +25,7 @@ namespace GruppUppgiften.UI
         {
             // var vehiclesFromDb = new List<Vehicle>();
             GarageImpl garageImpl = new GarageImpl();
-            if (File.Exists(filePath))
+            if (File.Exists(filePath))//ToDO file do not exists
             {
                 String JSONtxt = File.ReadAllText(filePath);
                 var vehiclesFromDb = JsonConvert.DeserializeObject<List<Vehicle>>(JSONtxt);

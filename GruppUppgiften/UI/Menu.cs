@@ -8,16 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using GruppUppgiften.UI;
 using GruppUppgiften.Data;
+using System.Threading;
 
 namespace GruppUppgiften
 {
     public class Menu
     {
-
+        private int loadFilecounter = 1;
         private readonly InputService inputService = new InputService();
         private readonly GarageImpl service = new GarageImpl();
-       
-        
+
+
         private List<Vehicle> ListV { get; set; }
 
         //Mainmenu Knappen skriv ut som title. Fast större kanske. Print with borderMenu title nu metod. 
@@ -508,326 +509,360 @@ namespace GruppUppgiften
         }
         public void MainMenu()
         {
-            
-            
 
-            //Counter that starts att oone and removes on if up arrow is pressed 
-            //and  adds one if down arrow is pressed
             ;//Todo - db not filling
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Load From File", "Exit And Save" };
-        {   //Counter that starts att oone and removes on if up arrow is pressed 
-            //and  adds one if down arrow is pressed
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove","Load From File", "Exit And Save" };
+            {   //Counter that starts att oone and removes on if up arrow is pressed 
+                //and  adds one if down arrow is pressed
 
 
-            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Roll Credits" };
-            int counter = 1;
-            bool enterPressed = false;
-            ConsoleKeyInfo keyinfo;
 
-            //Menu that shows up when run. Default.
-            Console.Clear();
-            PrintWithBorders("Main Menu");
-            Console.ForegroundColor = ConsoleColor.DarkBlue;
-            PrintWithBorders(menuItems[0]);
-            Console.ForegroundColor = ConsoleColor.Gray;
-            PrintWithBorders(menuItems[1]);
-            PrintWithBorders(menuItems[2]);
-            PrintWithBorders(menuItems[3]);
-            PrintWithBorders(menuItems[4]);
+                int counter = 1;
+                bool enterPressed = false;
+                ConsoleKeyInfo keyinfo;
 
-            while (enterPressed == false && counter  < 7 )
-            {
+                //Menu that shows up when run. Default.
+                Console.Clear();
+                PrintWithBorders("Main Menu");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                PrintWithBorders(menuItems[0]);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                PrintWithBorders(menuItems[1]);
+                PrintWithBorders(menuItems[2]);
+                PrintWithBorders(menuItems[3]);
+                PrintWithBorders(menuItems[4]);
+                PrintWithBorders(menuItems[5]);
 
-                keyinfo = Console.ReadKey();
-
-                if (keyinfo.Key == ConsoleKey.UpArrow)
+                while (enterPressed == false && counter < 7)
                 {
-                    if (counter > 1)
+
+                    keyinfo = Console.ReadKey();
+
+                    if (keyinfo.Key == ConsoleKey.UpArrow)
                     {
-                        counter--;
+                        if (counter > 1)
+                        {
+                            counter--;
+                        }
+                        else
+                        {
+                            counter = 6;
+                        }
+                    }
+
+                    if (keyinfo.Key == ConsoleKey.DownArrow)
+                    {
+                        if (counter < 6)
+                        {
+                            counter++;
+                        }
+                        else
+                        {
+                            counter = 1;
+                        }
+                    }
+
+                    if (keyinfo.Key == ConsoleKey.Enter)
+                    {
+                        Console.Clear();
+                        //Console.WriteLine("Exit");
+                        //{ "Search Vehicle", "List All Vehicle", "Park", "Remove","Load From File", "Exit And Save" };
+                        //activate choice                   
+                        switch (counter) // Här aktiveras valet.
+                        {
+                            case 1:
+                                SearchMenu();
+                                break;
+                            case 2:
+                                PrintInfoOfAllVehicles();
+                                MainMenu();
+                                break;
+                            case 3:
+                                TypeOfVehicleMenu();
+                                //Park                            
+                                // garaget.AddVehicle(Vehicle obj);                                
+                                break;
+                            case 4:
+                                Console.WriteLine("To Remove your car");
+                                Console.Write(@"Input Reg Number. In This Format (1 ABC123) : ");
+                                string regNum = inputService.GetString();
+                                Vehicle temp = service.SearchVehicle(regNum);
+                                Console.WriteLine(temp);
+                                service.RemoveVehicle(regNum);
+                                if (temp != null)
+                                {
+                                    Console.WriteLine("Vehicle has been removed");
+                                }
+                                Console.ReadKey();
+                                MainMenu();
+                                break;
+                            case 5:
+                                //Load from file
+                                if (loadFilecounter>0)
+                                {
+                                    service.AddVehicleListFromDB(JsonWriter.JsonToClients());
+                                    loadFilecounter--;
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    PrintWithBorders("File Already Loaded");
+                                    Thread.Sleep(700);
+                                    Console.ForegroundColor = ConsoleColor.Gray;
+                                }
+                                break;
+                            case 6:
+                                JsonWriter jsonWriter = new JsonWriter();
+                                jsonWriter.TextFileSaver(ListV); //Save to menu
+                                Credits credits = new Credits();
+                                credits.CreditsLoop();
+                                //Exit
+                                break;
+
+                        }
+                        counter = 6; // Måste matcha slutvalet.
+                    }
+
+                    if (counter == 1)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        PrintWithBorders(menuItems[0]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        PrintWithBorders(menuItems[1]);
+                        PrintWithBorders(menuItems[2]);
+                        PrintWithBorders(menuItems[3]);
+                        PrintWithBorders(menuItems[4]);
+                        PrintWithBorders(menuItems[5]);
+                    }
+                    if (counter == 2)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        PrintWithBorders(menuItems[0]);
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        PrintWithBorders(menuItems[1]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        PrintWithBorders(menuItems[2]);
+                        PrintWithBorders(menuItems[3]);
+                        PrintWithBorders(menuItems[4]);
+                        PrintWithBorders(menuItems[5]);
+                    }
+                    if (counter == 3)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        PrintWithBorders(menuItems[0]);
+                        PrintWithBorders(menuItems[1]);
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        PrintWithBorders(menuItems[2]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        PrintWithBorders(menuItems[3]);
+                        PrintWithBorders(menuItems[4]);
+                        PrintWithBorders(menuItems[5]);
+                    }
+                    if (counter == 4)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        PrintWithBorders(menuItems[0]);
+                        PrintWithBorders(menuItems[1]);
+                        PrintWithBorders(menuItems[2]);
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        PrintWithBorders(menuItems[3]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        PrintWithBorders(menuItems[4]);
+                        PrintWithBorders(menuItems[5]);
+                    }
+                    if (counter == 5)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        PrintWithBorders(menuItems[0]);
+                        PrintWithBorders(menuItems[1]);
+                        PrintWithBorders(menuItems[2]);
+                        PrintWithBorders(menuItems[3]);
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        PrintWithBorders(menuItems[4]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        PrintWithBorders(menuItems[5]);
+                    }
+                    if (counter == 6)
+                    {
+                        Console.Clear();
+                        PrintWithBorders("Main Menu");
+                        PrintWithBorders(menuItems[0]);
+                        PrintWithBorders(menuItems[1]);
+                        PrintWithBorders(menuItems[2]);
+                        PrintWithBorders(menuItems[3]);                       
+                        PrintWithBorders(menuItems[4]);
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;                        
+                        PrintWithBorders(menuItems[5]);
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                    }
+                    if (counter == 7)
+                    {
+                        enterPressed = true;
+                        //RollCredits();
+                    }
+                }
+
+
+            }// Här dör appen
+        }
+            //"Find By BrandXXX", "Find By ModelXXX", "Find All By ColorXXX", "Find All By Number Of Wheels", "Find By TypeXXX", "Main Menu" 
+            public void PrintAVehicle()
+            {
+                Console.WriteLine("To Find Your Car");
+                Console.Write("Enter RegNumber. In This Format (1 ABC123) : ");
+
+                string input = inputService.GetString();
+                Vehicle temp = service.SearchVehicle(input);
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                Console.WriteLine(temp);
+
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+
+
+            }
+            public void PrintVehicleByNumWheeles()
+            {
+                Console.WriteLine("Enter Number of wheeles");
+                int input = Convert.ToInt32(inputService.GetInt());
+
+                ListV = service.ListAmountOfWheels(input);
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                    Console.WriteLine(v);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+            }
+            public void PrintVehicleByColor()
+            {
+                Console.WriteLine("Enter Color");
+                string input = inputService.GetString();
+
+                ListV = service.ListTheColor(input.ToLower());
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                    Console.WriteLine(v);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+            }
+            public void PrintVehicleByModel()
+            {
+                Console.WriteLine("Enter Model");
+                string input = inputService.GetString();
+
+                ListV = service.ListModel(input.ToLower());
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                    Console.WriteLine(v);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+            }
+            public void PrintVehicleByBrand()
+            {
+                Console.WriteLine("Enter Brand"); ;
+                string input = inputService.GetString();
+
+                ListV = service.ListBrand(input.ToLower());
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                    Console.WriteLine(v);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+
+            }
+            public void PrintVehicleByType()
+            {
+                Console.WriteLine("Enter type");
+                Console.WriteLine("Bus, Truck, Car, Motorcycle or Moped");
+                string input = inputService.GetString();
+
+                ListV = service.ListTypeOfVehicles(input.ToLower());
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
+                    Console.WriteLine(v);
+                }
+
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+            }
+            public void PrintInfoOfAllVehicles()
+            {
+                ListV = service.ListVehicles();
+
+                Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
+
+                foreach (Vehicle v in ListV)
+                {
+                    if (v.ToString() == "GruppUppgiften.Vehicle")
+                    {
+                        string str = String.Format("|{0,15}|{1,10}|{2,17}|{3,12}|{4,23}|{5,19}|", v.Type, v.Model, v.Brand, v.Color, v.AmountOfWheeles, v.Reg_Nr);
+                        Console.WriteLine(str);
                     }
                     else
                     {
-                        counter = 5;
+                        Console.WriteLine(v.ToString());
                     }
+                    Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------|");
+
                 }
 
-                if (keyinfo.Key == ConsoleKey.DownArrow)
-                {
-                    if (counter < 5)
-                    {
-                        counter++;
-                    }
-                    else
-                    {
-                        counter = 1;
-                    }
-                }
-
-                if (keyinfo.Key == ConsoleKey.Enter)
-                {
-                    Console.Clear();
-                    //Console.WriteLine("Exit");
-                    //activate choice                   
-                    switch (counter) // Här aktiveras valet.
-                    {
-                        case 1:
-                            SearchMenu();
-                            break;
-                        case 2:
-                            PrintInfoOfAllVehicles();
-                            MainMenu();
-                            break;
-                        case 3:
-                            TypeOfVehicleMenu();
-                            //Park                            
-                            // garaget.AddVehicle(Vehicle obj);                                
-                            break;
-                        case 4:
-                            Console.WriteLine("To Remove your car");
-                            Console.Write(@"Input Reg Number. In This Format (1 ABC123) : ");
-                            string regNum = inputService.GetString();                            
-                            Vehicle temp = service.SearchVehicle(regNum);
-                            Console.WriteLine(temp);
-                            service.RemoveVehicle(regNum);
-                            if (temp != null)
-                            {
-                                Console.WriteLine("Vehicle has been removed");
-                            }                            
-                            Console.ReadKey();
-                            MainMenu();
-                            break;
-                        case 5:
-                            JsonWriter jsonWriter = new JsonWriter();
-                            jsonWriter.TextFileSaver(ListV); //Save to menu
-                            Credits credits = new Credits();
-                            credits.CreditsLoop();
-                            break;
-                    }
-                    counter = 6; // Måste matcha slutvalet.
-                }
-
-                if (counter == 1)
-                {
-                    Console.Clear();
-                    PrintWithBorders("Main Menu");
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    PrintWithBorders(menuItems[0]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[1]);
-                    PrintWithBorders(menuItems[2]);
-                    PrintWithBorders(menuItems[3]);
-                    PrintWithBorders(menuItems[4]);
-                }
-                if (counter == 2)
-                {
-                    Console.Clear();
-                    PrintWithBorders("Main Menu");
-                    PrintWithBorders(menuItems[0]);
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    PrintWithBorders(menuItems[1]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[2]);
-                    PrintWithBorders(menuItems[3]);
-                    PrintWithBorders(menuItems[4]);
-                }
-                if (counter == 3)
-                {
-                    Console.Clear();
-                    PrintWithBorders("Main Menu");
-                    PrintWithBorders(menuItems[0]);
-                    PrintWithBorders(menuItems[1]);
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    PrintWithBorders(menuItems[2]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[3]);
-                    PrintWithBorders(menuItems[4]);
-                }
-                if (counter == 4)
-                {
-                    Console.Clear();
-                    PrintWithBorders("Main Menu");
-                    PrintWithBorders(menuItems[0]);
-                    PrintWithBorders(menuItems[1]);
-                    PrintWithBorders(menuItems[2]);
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    PrintWithBorders(menuItems[3]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                    PrintWithBorders(menuItems[4]);
-                }
-                if (counter == 5)
-                {
-                    Console.Clear();
-                    PrintWithBorders("Main Menu");
-                    PrintWithBorders(menuItems[0]);
-                    PrintWithBorders(menuItems[1]);
-                    PrintWithBorders(menuItems[2]);
-                    PrintWithBorders(menuItems[3]);
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
-                    PrintWithBorders(menuItems[4]);
-                    Console.ForegroundColor = ConsoleColor.Gray;
-                }
-                if (counter == 6)
-                {
-                    enterPressed = true;
-                    //RollCredits();
-                }
+                Console.ForegroundColor = ConsoleColor.Blue;
+                PrintWithBorders("Return To Main Menu");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ReadKey();
+                MainMenu();
             }
-
-
-        }// Här dör appen
-
-        //"Find By BrandXXX", "Find By ModelXXX", "Find All By ColorXXX", "Find All By Number Of Wheels", "Find By TypeXXX", "Main Menu" 
-        public void PrintAVehicle()
-        {
-            Console.WriteLine("To Find Your Car");
-            Console.Write("Enter RegNumber. In This Format (1 ABC123) : ");
-
-            string input = inputService.GetString();
-            Vehicle temp = service.SearchVehicle(input);
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            Console.WriteLine(temp);
-
-            Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-           
-
-        }
-        public void PrintVehicleByNumWheeles()
-        {
-            Console.WriteLine("Enter Number of wheeles");
-            int input = Convert.ToInt32(inputService.GetInt());
-
-            ListV = service.ListAmountOfWheels(input);
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-        }
-        public void PrintVehicleByColor()
-        {
-            Console.WriteLine("Enter Color");
-            string input = inputService.GetString();
-
-            ListV = service.ListTheColor(input.ToLower());
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-        }
-        public void PrintVehicleByModel()
-        {
-            Console.WriteLine("Enter Model");
-            string input = inputService.GetString();
-
-            ListV = service.ListModel(input.ToLower());
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-        }
-        public void PrintVehicleByBrand()
-        {
-            Console.WriteLine("Enter Brand"); ;
-            string input = inputService.GetString();
-
-            ListV = service.ListBrand(input.ToLower());
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-
-        }
-        public void PrintVehicleByType()
-        {
-            Console.WriteLine("Enter type");
-            Console.WriteLine("Bus, Truck, Car, Motorcycle or Moped");
-            string input = inputService.GetString();
-
-            ListV = service.ListTypeOfVehicles(input.ToLower());
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------------------------------|");
-                Console.WriteLine(v);
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-        }
-        public void PrintInfoOfAllVehicles()
-        {
-            ListV = service.ListVehicles();
-
-            Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
-
-            foreach (Vehicle v in ListV)
-            {
-                if (v.ToString() == "GruppUppgiften.Vehicle")
-                {
-                    string str =String.Format("|{0,15}|{1,10}|{2,17}|{3,12}|{4,23}|{5,19}|", v.Type, v.Model, v.Brand, v.Color, v.AmountOfWheeles, v.Reg_Nr);
-                    Console.WriteLine(str);
-                }
-                else
-                {
-                    Console.WriteLine(v.ToString());
-                }
-                Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------|");
-                
-            }
-
-            Console.ForegroundColor = ConsoleColor.Blue;
-            PrintWithBorders("Return To Main Menu");
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.ReadKey();
-            MainMenu();
         }
     }
-}
+
 

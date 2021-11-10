@@ -15,16 +15,20 @@ namespace GruppUppgiften.Service
 
         public List<Vehicle> AddVehicleListFromDB(List<Vehicle> objects)
         {
-            foreach (Vehicle v in objects)
+            if (objects != null)
             {
-                
-                AddVehicle(v);
-             
-                if (objects.Count > 50)
+                foreach (Vehicle v in objects)
                 {
-                    Console.WriteLine("The garage is full.");
+
+                    AddVehicle(v);
+
+                    if (objects.Count > 50)
+                    {
+                        Console.WriteLine("The garage is full.");
+                    }
                 }
             }
+           
             return objects;
         }
         public Vehicle AddVehicle(Vehicle obj)
