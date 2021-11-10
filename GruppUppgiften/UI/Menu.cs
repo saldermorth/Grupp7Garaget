@@ -390,6 +390,7 @@ namespace GruppUppgiften
                             break;
                         case 6:
                             PrintAVehicle();
+
                             //Find a Vehicle
                             break;
                         case 7:
@@ -514,6 +515,11 @@ namespace GruppUppgiften
             //and  adds one if down arrow is pressed
             ;//Todo - db not filling
             string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Load From File", "Exit And Save" };
+        {   //Counter that starts att oone and removes on if up arrow is pressed 
+            //and  adds one if down arrow is pressed
+
+
+            string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove", "Roll Credits" };
             int counter = 1;
             bool enterPressed = false;
             ConsoleKeyInfo keyinfo;
@@ -570,6 +576,7 @@ namespace GruppUppgiften
                             break;
                         case 2:
                             PrintInfoOfAllVehicles();
+                            MainMenu();
                             break;
                         case 3:
                             TypeOfVehicleMenu();
@@ -577,15 +584,17 @@ namespace GruppUppgiften
                             // garaget.AddVehicle(Vehicle obj);                                
                             break;
                         case 4:
-                            service.AddVehicleListFromDB(JsonWriter.JsonToClients());
-                            //Console.WriteLine("To Remove your car");
-                            //Console.Write("Input Reg Number : ");
-                            //string regNum = inputService.GetString();                            
-                            //Vehicle temp = service.SearchVehicle(regNum);
-                            //Console.WriteLine(temp);
-                            //service.RemoveVehicle(regNum);
-                            //Console.WriteLine("Vehicle has been removed");
-                            //Console.ReadKey();
+                            Console.WriteLine("To Remove your car");
+                            Console.Write(@"Input Reg Number. In This Format (1 ABC123) : ");
+                            string regNum = inputService.GetString();                            
+                            Vehicle temp = service.SearchVehicle(regNum);
+                            Console.WriteLine(temp);
+                            service.RemoveVehicle(regNum);
+                            if (temp != null)
+                            {
+                                Console.WriteLine("Vehicle has been removed");
+                            }                            
+                            Console.ReadKey();
                             MainMenu();
                             break;
                         case 5:
@@ -672,7 +681,7 @@ namespace GruppUppgiften
         public void PrintAVehicle()
         {
             Console.WriteLine("To Find Your Car");
-            Console.Write("Enter RegNumber : ");
+            Console.Write("Enter RegNumber. In This Format (1 ABC123) : ");
 
             string input = inputService.GetString();
             Vehicle temp = service.SearchVehicle(input);

@@ -11,8 +11,8 @@ namespace GruppUppgiften
     {
         public void CreditsLoop()
         {
-          
-                for (int i = 0; i < 3960; i++)
+            //for (int i = 0; i < 3960; i++)
+                for (int i = 0; i < 6355; i++)
                 {
                     randChar();
                 }
@@ -23,18 +23,26 @@ namespace GruppUppgiften
             Console.ForegroundColor = ConsoleColor.Black;
             string[] theTeam = { "Anton Edholm", "Emre Ersoylu", "Gustav Berg", "Heja Leven Darwich", "Ronny Fagerlund", "Simon Hjulström" };
             
-            Console.SetCursorPosition(45,2);
+            Console.SetCursorPosition(65,2);
             Console.Write("_______/THE TEAM\\_______");
             int posY = 4;
             for (int i = 0; i < theTeam.Length; i++)
-            {                
-                Console.SetCursorPosition(50, posY);
+            {
+                Console.SetCursorPosition(70, posY);
                 Console.Write("█ ");
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(theTeam[i]);
+               Console.BackgroundColor = ConsoleColor.White;
+               Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write(" █");
                 posY += 3;
-                Thread.Sleep(1700);
-            }            
+                Thread.Sleep(1000);
+                }
+            Console.ReadKey();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Environment.Exit(-1);
         }
         public void randChar()
         {           
