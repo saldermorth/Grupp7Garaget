@@ -13,6 +13,8 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetBufferSize(155,40);
             Console.SetWindowSize(155, 40);
 
