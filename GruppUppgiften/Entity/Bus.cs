@@ -15,6 +15,7 @@ namespace GruppUppgiften
             HasToielts = hasToielts;
             Levels = levels;
         }
+       
 
         public override string ToString()
         {

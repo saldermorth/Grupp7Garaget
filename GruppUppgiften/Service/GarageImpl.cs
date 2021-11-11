@@ -32,6 +32,7 @@ namespace GruppUppgiften.Service
         }
         public Vehicle AddVehicle(Vehicle obj)
         {
+            
             Vehicle toAdd = dao.AddVehicle(obj);
             if (toAdd == null)
             {

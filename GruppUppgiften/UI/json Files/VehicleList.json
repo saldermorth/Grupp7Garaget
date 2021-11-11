@@ -1,12 +1,1 @@
-[
-  {
-    "HasToielts": true,
-    "Levels": 1,
-    "AmountOfWheeles": 4,
-    "Color": "aaaaaaa",
-    "Reg_Nr": "1 DLQ435",
-    "Type": "bus",
-    "Model": "aaaaaa",
-    "Brand": "sssss"
-  }
-]
+[{"HasToielts":false,"Levels":2222,"AmountOfWheeles":4,"Color":"aaaaaaa","Reg_Nr":"1 GKF203","Type":"bus","Model":"aaaaaaaa","Brand":"aaaaaaaa"},{"IsPedal":true,"HasHorn":false,"AmountOfWheeles":2,"Color":"bbbbbbbb","Reg_Nr":"2 FYM216","Type":"moped","Model":"bbbbbbbbbb","Brand":"bbbbbbbbbb"},{"IsOffroad":false,"Weight":2222222,"AmountOfWheeles":2,"Color":"cccccccccc","Reg_Nr":"3 SAJ445","Type":"motorcycle","Model":"ccccccccccc","Brand":"cccccccccc"},{"MaxTrailerWeight":22222222,"HasTrailer":true,"AmountOfWheeles":4,"Color":"ddddddddd","Reg_Nr":"4 BSF376","Type":"truck","Model":"ddddddddddddd","Brand":"ddddddddd"},{"IsPetrol":false,"IsSportCar":false,"AmountOfWheeles":4,"Color":"eeeeeeeeee","Reg_Nr":"5 MMX436","Type":"car","Model":"eeeeeeeeeeeee","Brand":"eeeeeeeeeeee"}]
