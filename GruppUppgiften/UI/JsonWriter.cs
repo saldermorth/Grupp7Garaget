@@ -34,8 +34,9 @@ namespace GruppUppgiften.UI
             List<Vehicle> vehicles22 = new List<Vehicle>();
             
             List<Bus> busFromDb = null;
-            busFromDb = JsonConvert.DeserializeObject<List<Bus>>(JSONtxt2);            
-
+            #region
+            busFromDb = JsonConvert.DeserializeObject<List<Bus>>(JSONtxt2);
+           
             foreach (Vehicle vehicle in busFromDb)
             {
                 if (vehicle.Type == "bus")
@@ -86,15 +87,11 @@ namespace GruppUppgiften.UI
                     break;
                 }
             }
-
-
-
-
+            #endregion
             if (File.Exists(filePath))//ToDO file do not exists
             {
                 String JSONtxt = File.ReadAllText(filePath);
-                // (Bus) JsonConvert.DeserializeObject(JSONtxt, Vehicle.Equals);
-                //vehiclesFromDb = JsonConvert.DeserializeObject<List<Vehicle>>(JSONtxt);
+                
                 if (vehicles22 != null)
                 {
                     foreach (Vehicle item in vehicles22)
