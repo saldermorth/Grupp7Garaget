@@ -9,8 +9,7 @@ using GruppUppgiften.UI;
 namespace GruppUppgiften.Data
 {
     class VehicleImpl : IVehicle
-    {
-        //ToDo - DB is here
+    {       
         
         private readonly List<Vehicle> vehicleList = new();
        
@@ -87,7 +86,7 @@ namespace GruppUppgiften.Data
         {
             if (!vehicleList.Contains(obj) && obj != null && vehicleList.Count <= 50)
             {
-                vehicleList.Add(obj);/// TOdo- Add
+                vehicleList.Add(obj);
             }
             if (vehicleList.Count > 50)
             {
@@ -101,7 +100,7 @@ namespace GruppUppgiften.Data
             {
                 if (!vehicleList.Contains(v) && v != null && vehicleList.Count <= 50)
                 {
-                    vehicleList.Add(v);/// TOdo- Add
+                    vehicleList.Add(v);
                 }
                 if (vehicleList.Count > 50)
                 {

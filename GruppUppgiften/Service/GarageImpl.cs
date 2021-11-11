@@ -27,7 +27,7 @@ namespace GruppUppgiften.Service
                     }
                 }
             }
-           
+
             return objects;
         }
         public Vehicle AddVehicle(Vehicle obj)
@@ -185,7 +185,7 @@ namespace GruppUppgiften.Service
 
         public List<Vehicle> ListVehicles()
         {
-            List<Vehicle> listOfVehicles = dao.ListVehicles();//Todo - understand
+            List<Vehicle> listOfVehicles = dao.ListVehicles();
             if (listOfVehicles?.Any() != true)
             {
                 Console.WriteLine("The list is empty.");

@@ -1,1 +1,62 @@
-[{"HasToielts":false,"Levels":2222,"AmountOfWheeles":4,"Color":"aaaaaaa","Reg_Nr":"1 GKF203","Type":"bus","Model":"aaaaaaaa","Brand":"aaaaaaaa"},{"IsPetrol":false,"IsSportCar":false,"AmountOfWheeles":4,"Color":"eeeeeeeeee","Reg_Nr":"5 MMX436","Type":"car","Model":"eeeeeeeeeeeee","Brand":"eeeeeeeeeeee"},{"IsOffroad":false,"Weight":2222222,"AmountOfWheeles":2,"Color":"cccccccccc","Reg_Nr":"3 SAJ445","Type":"motorcycle","Model":"ccccccccccc","Brand":"cccccccccc"},{"MaxTrailerWeight":22222222,"HasTrailer":true,"AmountOfWheeles":4,"Color":"ddddddddd","Reg_Nr":"4 BSF376","Type":"truck","Model":"ddddddddddddd","Brand":"ddddddddd"}]
+[
+  {
+    "HasToielts": true,
+    "Levels": 1,
+    "AmountOfWheeles": 4,
+    "Color": "fgh",
+    "Reg_Nr": "1 SQB360",
+    "Type": "bus",
+    "Model": "fgdfgh",
+    "Brand": "fgh"
+  },
+  {
+    "IsPedal": true,
+    "HasHorn": false,
+    "AmountOfWheeles": 2,
+    "Color": "silver",
+    "Reg_Nr": "6 KSP724",
+    "Type": "moped",
+    "Model": "Puch",
+    "Brand": "Dakota"
+  },
+  {
+    "IsOffroad": true,
+    "Weight": 125,
+    "AmountOfWheeles": 2,
+    "Color": "black",
+    "Reg_Nr": "11 LXL589",
+    "Type": "motorcycle",
+    "Model": "dt",
+    "Brand": "Yamaha"
+  },
+  {
+    "IsOffroad": false,
+    "Weight": 133,
+    "AmountOfWheeles": 2,
+    "Color": "red",
+    "Reg_Nr": "16 UXP163",
+    "Type": "motorcycle",
+    "Model": "runner",
+    "Brand": "dat"
+  },
+  {
+    "IsOffroad": true,
+    "Weight": 8000,
+    "AmountOfWheeles": 2,
+    "Color": "blue",
+    "Reg_Nr": "21 RDV174",
+    "Type": "motorcycle",
+    "Model": "r456q",
+    "Brand": "Scania"
+  },
+  {
+    "IsPetrol": false,
+    "IsSportCar": true,
+    "AmountOfWheeles": 4,
+    "Color": "silver",
+    "Reg_Nr": "26 TAK337",
+    "Type": "car",
+    "Model": "Focus",
+    "Brand": "Ford"
+  }
+]

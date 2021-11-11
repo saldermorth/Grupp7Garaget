@@ -17,7 +17,7 @@ namespace GruppUppgiften
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.SetBufferSize(155,40);
             Console.SetWindowSize(155, 40);
-
+            
             Run();
             
             

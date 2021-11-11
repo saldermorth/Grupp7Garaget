@@ -12,37 +12,29 @@ namespace GruppUppgiften.UI
 {
     class JsonWriter : GarageImpl
     {
-        
+        //Todo - Michael behöver byta sitt namn mellan users och source
+              
         const string filePath = @"C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
        
         public void TextFileSaver(List<Vehicle> vehicles)        
         {                               
            ClientToJsonFile(vehicles);
-
-           //JsonToClients();
-
         }
-        public List<Vehicle> JsonToClients()
+        public List<Vehicle> JsonToClients(List<Vehicle> vehiclesFromFile)//ListV
         {
-             
-             List<Vehicle> vehiclesFromDb = null;
-             
 
-            String JSONtxt2 = File.ReadAllText(filePath);
-           
+            string JSONtxt2 = File.ReadAllText(filePath);// (filePath);
 
-            List<Vehicle> vehicles22 = new List<Vehicle>();
+            vehiclesFromFile = new(); // List<Vehicle>();
             
-            List<Bus> busFromDb = null;
             #region
-            busFromDb = JsonConvert.DeserializeObject<List<Bus>>(JSONtxt2);
+            var busFromDb = JsonConvert.DeserializeObject<List<Bus>>(JSONtxt2);
            
             foreach (Vehicle vehicle in busFromDb)
             {
                 if (vehicle.Type == "bus")
                 {
-                    vehicles22.Add((Bus)vehicle);
-                    break;
+                    vehiclesFromFile.Add((Bus)vehicle);                    
                 }               
             }
             var carFromDb = JsonConvert.DeserializeObject<List<Car>>(JSONtxt2);
@@ -51,8 +43,7 @@ namespace GruppUppgiften.UI
             {
                 if (vehicle.Type == "car")
                 {
-                    vehicles22.Add((Car)vehicle);
-                    break;
+                    vehiclesFromFile.Add((Car)vehicle);                    
                 }
             }
 
@@ -62,8 +53,7 @@ namespace GruppUppgiften.UI
             {
                 if (vehicle.Type == "moped")
                 {
-                    vehicles22.Add((Moped)vehicle);
-                    break;
+                    vehiclesFromFile.Add((Moped)vehicle);                    
                 }
             }
 
@@ -73,8 +63,8 @@ namespace GruppUppgiften.UI
             {
                 if (vehicle.Type == "motorcycle")
                 {
-                    vehicles22.Add((Motorcycle)vehicle);
-                    break;
+                    vehiclesFromFile.Add((Motorcycle)vehicle);
+                    
                 }
             }
             var truckFromDb = JsonConvert.DeserializeObject<List<Truck>>(JSONtxt2);
@@ -83,37 +73,34 @@ namespace GruppUppgiften.UI
             {
                 if (vehicle.Type == "truck")
                 {
-                    vehicles22.Add((Truck)vehicle);
-                    break;
+                    vehiclesFromFile.Add((Truck)vehicle);
+                    
                 }
             }
             #endregion
-            if (File.Exists(filePath))//ToDO file do not exists
-            {
-                String JSONtxt = File.ReadAllText(filePath);
-                
-                if (vehicles22 != null)
-                {
-                    foreach (Vehicle item in vehicles22)
-                    {
-                        
-                        AddVehicle(item);                        
-                    }
-                }                
-            }
-            return vehicles22;
+            //if (File.Exists(filePath))//ToDO file do not exists
+            //{
+            //    String JSONtxt = File.ReadAllText(filePath);
+
+            //    if (vehiclesFromFile != null)
+            //    {
+            //        foreach (Vehicle item in vehiclesFromFile)
+            //        {
+
+            //            AddVehicle(item);
+            //        }
+            //    }
+            //}
+            return vehiclesFromFile;
         }
 
         public void ClientToJsonFile(List<Vehicle> vehicles)// List of objects into Jsonfile
         {
                            
-
-            var json = JsonConvert.SerializeObject(vehicles);
-
-            string json2 = JsonConvert.SerializeObject(vehicles, Formatting.Indented);
-
+            var json = JsonConvert.SerializeObject(vehicles, Formatting.Indented);                       
+           //ammend
             File.WriteAllText(filePath, json);
-
+           
         }
         
     

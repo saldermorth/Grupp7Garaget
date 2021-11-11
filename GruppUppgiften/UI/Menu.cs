@@ -17,6 +17,7 @@ namespace GruppUppgiften
         private int loadFilecounter = 1;
         private readonly InputService inputService = new ();
         private readonly GarageImpl service = new ();
+        private readonly Credits credits = new ();
         //private readonly JsonWriter jsonWriter = new ();
 
 
@@ -331,7 +332,7 @@ namespace GruppUppgiften
             PrintWithBorders(menuItems[5]);
             PrintWithBorders(menuItems[6]);
 
-            Menu run = new Menu(); // TODO ????
+            Menu run = new Menu(); 
 
             while (enterPressed == false)
             {
@@ -510,13 +511,10 @@ namespace GruppUppgiften
         }
         public void MainMenu()
         {
-
-            ;//Todo - db not filling
+                        
             string[] menuItems = { "Search Vehicle", "List All Vehicle", "Park", "Remove","Load From File", "Exit And Save" };
             {   //Counter that starts att oone and removes on if up arrow is pressed 
                 //and  adds one if down arrow is pressed
-
-
 
                 int counter = 1;
                 bool enterPressed = false;
@@ -601,7 +599,8 @@ namespace GruppUppgiften
                                 //Load from file
                                 if (loadFilecounter>0)
                                 {
-                                    List<Vehicle> JsonList = JsonToClients();
+                                    List<Vehicle> JsonList = JsonToClients(ListV);//ListV blir null här
+                                   // ListV = JsonToClients();
                                     service.AddVehicleListFromDB(JsonList);
                                     loadFilecounter--;
                                 }
@@ -613,14 +612,11 @@ namespace GruppUppgiften
                                     Console.ForegroundColor = ConsoleColor.Gray;
                                 }
                                 break;
-                            case 6:
-                                JsonWriter jsonWriter = new JsonWriter();
-                                jsonWriter.TextFileSaver(ListV); //Save to menu
-                                Credits credits = new Credits();
+                            case 6:                                
+                                TextFileSaver(ListV); //Save to menu                                
                                 credits.CreditsLoop();
                                 //Exit
                                 break;
-
                         }
                         counter = 6; // Måste matcha slutvalet.
                     }
