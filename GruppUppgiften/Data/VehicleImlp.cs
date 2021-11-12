@@ -9,13 +9,13 @@ using GruppUppgiften.UI;
 namespace GruppUppgiften.Data
 {
     class VehicleImpl : IVehicle
-    {       
-        
+    {
+
         private readonly List<Vehicle> vehicleList = new();
-       
+
         List<Vehicle> IVehicle.ListVehicles()
         {
-            return vehicleList;
+           return vehicleList;
         }
 
 
@@ -110,7 +110,7 @@ namespace GruppUppgiften.Data
             return objects;
         }
 
-            void IVehicle.RemoveVehicle(Vehicle obj)
+        void IVehicle.RemoveVehicle(Vehicle obj)
         {
             for (int i = 0; i < vehicleList.Count; i++)
             {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GruppUppgiften.Utilitys;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,24 @@ using System.Threading.Tasks;
 
 namespace GruppUppgiften
 {
-    public class Credits
+    class Credits 
     {
+        private readonly InputService input = new();
         public void CreditsLoop()
         {
             //for (int i = 0; i < 3960; i++)
-                for (int i = 0; i < 6355; i++)
-                {
-                    randChar();
-                }
+            for (int i = 0; i < 6355; i++)
+            {
+                RandChar();
+            }
             NameWriter();
         }
-        public void NameWriter()
+        public static void NameWriter()
         {
             Console.ForegroundColor = ConsoleColor.Black;
             string[] theTeam = { "Anton Edholm", "Emre Ersoylu", "Gustav Berg", "Heja Leven Darwich", "Ronny Fagerlund", "Simon Hjulström" };
-            
-            Console.SetCursorPosition(65,2);
+
+            Console.SetCursorPosition(65, 2);
             Console.Write("_______/THE TEAM\\_______");
             int posY = 4;
             for (int i = 0; i < theTeam.Length; i++)
@@ -33,21 +35,21 @@ namespace GruppUppgiften
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write(theTeam[i]);
-               Console.BackgroundColor = ConsoleColor.White;
-               Console.ForegroundColor = ConsoleColor.Black;
+                Console.BackgroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Black;
                 Console.Write(" ██");
                 posY += 3;
                 Thread.Sleep(1000);
-                }
+            }
             Console.ReadKey();
             Console.BackgroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.Gray;
             Environment.Exit(-1);
         }
-        public void randChar()
-        {           
-            Random rnd2 = new Random();
-            int randChar = rnd2.Next(1, 5);
+        public void RandChar()
+        {
+
+            int randChar = input.GetRandomNumber(1, 5);
             char k = ' ';
 
             switch (randChar)
@@ -69,16 +71,16 @@ namespace GruppUppgiften
                     break;
             }
 
-            rgbPrint(k);
-            
+            RgbPrint(k);
 
         }
-        public void rgbPrint(char c)
+        public void RgbPrint(char c)
         {
-            Random rnd = new Random();            
+            Random rnd = new();
             Console.BackgroundColor = ConsoleColor.White;
 
-            int randInt = rnd.Next(1, 9);
+            int randInt = input.GetRandomNumber(1, 9);
+            
             double randInt2 = 3.14 * randInt;
 
             if (randInt2 < 10)
@@ -102,7 +104,7 @@ namespace GruppUppgiften
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }
 
-            Console.Write(c);            
+            Console.Write(c);
 
         }
     }

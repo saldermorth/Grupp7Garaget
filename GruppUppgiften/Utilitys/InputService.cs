@@ -21,6 +21,13 @@ namespace GruppUppgiften.Utilitys
 
         }
 
+        public int GetRandomNumber(int min, int max)
+        {
+            Random rnd = new();
+            int randomNr = rnd.Next(min, max);
+            return randomNr;
+        }
+
         public string GetRndRegNr()
         {
 

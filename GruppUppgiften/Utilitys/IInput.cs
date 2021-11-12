@@ -12,6 +12,7 @@ namespace GruppUppgiften.Utilitys
         string GetString();
         string GetRndRegNr();
         bool GetTrueOrFalse();
+        int GetRandomNumber(int min, int max);
 
     }
 }
