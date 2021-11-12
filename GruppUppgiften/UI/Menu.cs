@@ -424,7 +424,18 @@ namespace GruppUppgiften
 
                 //Menu that shows up when run. Default.
                 Console.Clear();
-                PrintWithBorders("Main Menu");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                
+                Console.WriteLine(@"                                         ___                             
+                                        / __| __ _  _ _  __ _  __ _  ___ 
+                                       | (_ |/ _` || '_|/ _` |/ _` |/ -_)
+                                        \___|\__,_||_|  \__,_|\__, |\___|
+                                                              |___/");
+                Console.WriteLine(@"                                        ____  ____  ____  ____  ____  _________  ____ 
+                                       ||G ||||r ||||o ||||u ||||p ||||       ||||7 ||
+                                       ||__||||__||||__||||__||||__||||_______||||__||
+                                       |/__\||/__\||/__\||/__\||/__\||/_______\||/__\|
+");
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
                 PrintWithBorders(menuItems[0]);
                 Console.ForegroundColor = ConsoleColor.Gray;
@@ -502,7 +513,7 @@ namespace GruppUppgiften
                                 if (loadFilecounter > 0)
                                 {
                                     ListV = JsonToClients();//ListV blir null här
-                                                                                  // ListV = JsonToClients();
+                                                            // ListV = JsonToClients();
                                     service.AddVehicleListFromDB(ListV);
                                     loadFilecounter--;
                                 }
@@ -736,7 +747,7 @@ namespace GruppUppgiften
         public void PrintInfoOfAllVehicles()
         {
             ListV = service.ListVehicles();
-           
+
             Console.WriteLine($"|     TYPE      |   MODEL  |   MANUFACTURER   |   COLOR   |   NUMBER OF WHEELES   |   LICENS NUMBER   |   SPECIAL FEUTURES              |");
 
             foreach (Vehicle v in ListV)
