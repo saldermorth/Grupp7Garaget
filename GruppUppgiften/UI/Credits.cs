@@ -50,33 +50,18 @@ namespace GruppUppgiften
         {
 
             int randChar = input.GetRandomNumber(1, 5);
-            char k = ' ';
-
-            switch (randChar)
+            var k = randChar switch
             {
-                case 1:
-                    k = '¥';
-                    break;
-                case 2:
-                    k = 'Œ';
-                    break;
-                case 3:
-                    k = 'Ŧ';
-                    break;
-                case 4:
-                    k = 'Ƣ';
-                    break;
-                default:
-                    k = ' ';
-                    break;
-            }
-
+                1 => '¥',
+                2 => 'Œ',
+                3 => 'Ŧ',
+                4 => 'Ƣ',
+                _ => ' ',
+            };
             RgbPrint(k);
-
         }
         public void RgbPrint(char c)
         {
-            Random rnd = new();
             Console.BackgroundColor = ConsoleColor.White;
 
             int randInt = input.GetRandomNumber(1, 9);

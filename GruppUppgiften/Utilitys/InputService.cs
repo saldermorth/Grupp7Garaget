@@ -24,8 +24,10 @@ namespace GruppUppgiften.Utilitys
         public int GetRandomNumber(int min, int max)
         {
             Random rnd = new();
-            int randomNr = rnd.Next(min, max);
-            return randomNr;
+            lock (rnd)
+            {
+                return rnd.Next(min, max);
+            }
         }
 
         public string GetRndRegNr()
@@ -33,7 +35,7 @@ namespace GruppUppgiften.Utilitys
 
             int oneNum = 65; // A                
             int twoNum = 90; // Z
-            string regNr = $"{++idCounter} ";
+            string regNr = $"{++idCounter}";
             Random rnd = new();
 
             for (int i = 0; i < 3; i++)

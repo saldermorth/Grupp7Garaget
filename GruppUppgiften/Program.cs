@@ -13,27 +13,23 @@ namespace GruppUppgiften
     {
         static void Main(string[] args)
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.SetBufferSize(155,40);
-            Console.SetWindowSize(155, 40);
             
+#pragma warning disable CA1416 // Validate platform compatibility
+            SetBufferSize(155, 40); // To remove the warning msg
+#pragma warning restore CA1416 // Validate platform compatibility
+#pragma warning disable CA1416 // Validate platform compatibility
+            SetWindowSize(155, 40); // To remove the warning msg
+#pragma warning restore CA1416 // Validate platform compatibility
+
             Run();
-            
-            
 
         }
         public static void Run()
         {
-            //GarageImpl service = new GarageImpl();
-            //service.AddVehicleListFromDB(JsonWriter.JsonToClients());
-            //garageImpl.AddVehicleListFromDB(JsonWriter.JsonToClients());
-            Menu main = new Menu();
+            BackgroundColor = ConsoleColor.Black;
+            ForegroundColor = ConsoleColor.Gray;
+            Menu main = new();
             main.MainMenu();
-            
-
-
-
         }
     }
 }

@@ -485,7 +485,7 @@ namespace GruppUppgiften
                                 break;
                             case 4:
                                 Console.WriteLine("To Remove your car");
-                                Console.Write(@"Input Reg Number. In This Format (1 ABC123) : ");
+                                Console.Write(@"Input Reg Number. In This Format (1ABC123) : ");
                                 string regNum = inputService.GetString();
                                 Vehicle temp = service.SearchVehicle(regNum);
                                 Console.WriteLine(temp);

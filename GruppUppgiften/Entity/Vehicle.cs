@@ -27,21 +27,5 @@ namespace GruppUppgiften
             Model = model;
             Brand = brand;
         }
-
-        //public override bool Equals(object obj)
-        //{
-        //    return obj is Vehicle vehicle &&
-        //           AmountOfWheeles == vehicle.AmountOfWheeles &&
-        //           Color == vehicle.Color &&
-        //           Reg_Nr == vehicle.Reg_Nr &&
-        //           Type == vehicle.Type &&
-        //           Model == vehicle.Model &&
-        //           Brand == vehicle.Brand;
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return HashCode.Combine(AmountOfWheeles, Color, Reg_Nr, Type, Model, Brand);
-        //}
     }
 }

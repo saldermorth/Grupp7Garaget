@@ -13,9 +13,9 @@ namespace GruppUppgiften.UI
 {
     class JsonWriter : GarageImpl
     {
-        //Todo - Michael behöver byta sitt namn mellan users och source
+        //Todo - För att testa IO-delen så behöver man leta upp på sin dator, vägen där "VehicleList.json" filen ligger och kopiera in den som nedan.
 
-        const string filePath = @"C:\Users\berg_\source\repos\Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
+        const string filePath = @"C:\Users\Anton\source\repos\Grupp7Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
 
         public static void TextFileSaver(List<Vehicle> vehicles)
         {

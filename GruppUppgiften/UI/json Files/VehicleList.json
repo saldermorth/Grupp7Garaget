@@ -1,1 +1,32 @@
-null
+[
+  {
+    "HasToielts": false,
+    "Levels": 1,
+    "AmountOfWheeles": 4,
+    "Color": "Yellow",
+    "Reg_Nr": "6JJJ856",
+    "Type": "bus",
+    "Model": "City bus",
+    "Brand": "Scoda"
+  },
+  {
+    "IsPedal": false,
+    "HasHorn": true,
+    "AmountOfWheeles": 2,
+    "Color": "green",
+    "Reg_Nr": "6 TVM399",
+    "Type": "moped",
+    "Model": "v20",
+    "Brand": "honda"
+  },
+  {
+    "MaxTrailerWeight": 0,
+    "HasTrailer": false,
+    "AmountOfWheeles": 4,
+    "Color": "Red",
+    "Reg_Nr": "11 AIP781",
+    "Type": "truck",
+    "Model": "Small Truck",
+    "Brand": "Volvo"
+  }
+]
