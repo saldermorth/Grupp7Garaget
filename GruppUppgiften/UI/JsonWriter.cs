@@ -15,19 +15,27 @@ namespace GruppUppgiften.UI
     {
         //Todo - För att testa IO-delen så behöver man leta upp på sin dator, vägen där "VehicleList.json" filen ligger och kopiera in den som nedan.
 
+
+
         const string filePath = @"C:\Users\Anton\source\repos\Grupp7Garaget\GruppUppgiften\UI\json Files\VehicleList.json";
 
         public static void TextFileSaver(List<Vehicle> vehicles)
         {
+            
+           
             ClientToJsonFile(vehicles);
         }
         public static List<Vehicle> JsonToClients()//ListV
         {
 
-            string JSONtxt2 = File.ReadAllText(filePath);// (filePath);
+            string CreatPath = AppDomain.CurrentDomain.BaseDirectory + @"GustavsNyaFil.json";
+            string JSONtxt2 = File.ReadAllText(CreatPath);// (filePath);
 
             List<Vehicle> vehiclesFromFile = new(); // List<Vehicle>();
-
+            if (JSONtxt2 == null || JSONtxt2 == "")
+            {
+                return null;
+            }
             #region
             var busFromDb = JsonConvert.DeserializeObject<List<Bus>>(JSONtxt2);
             foreach (Vehicle vehicle in busFromDb)
@@ -82,10 +90,10 @@ namespace GruppUppgiften.UI
 
         public static void ClientToJsonFile(List<Vehicle> vehicles)// List of objects into Jsonfile
         {
-
+            string CreatPath = AppDomain.CurrentDomain.BaseDirectory + @"GustavsNyaFil.json";
             var json = JsonConvert.SerializeObject(vehicles, Formatting.Indented);
             //ammend
-            File.WriteAllText(filePath, json);
+            File.WriteAllText(CreatPath, json);
 
         }
 
